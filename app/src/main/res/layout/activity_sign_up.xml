@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/signUpText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:textAlignment="center"
+        android:padding="10dp"
+        />
+    <TextView
+        android:id="@+id/usernameLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please input your desired username:"
+        android:layout_below="@+id/signUpText"
+        android:padding="10dp"
+        />
+
+    <EditText
+        android:id="@+id/usernameInputText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/usernameLabel"
+        android:layout_marginTop="0dp"
+        android:background="@android:drawable/editbox_background"
+        android:hint="Enter username"
+        android:padding="10dp" />
+
+    <Button
+        android:id="@+id/nextBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:layout_below="@id/usernameInputText"/>
+
+    <TextView
+        android:id="@+id/cancelLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go Back to log in"
+        android:layout_below="@+id/nextBtn"
+        android:padding="10dp"
+        android:textAlignment="center"
+        />
+
+</RelativeLayout>
