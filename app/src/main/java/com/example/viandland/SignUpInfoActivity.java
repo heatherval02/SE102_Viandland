@@ -65,10 +65,7 @@ public class SignUpInfoActivity extends AppCompatActivity {
                 } else if (!(password.getText().toString().equals(confirmPassword.getText().toString()))){
                     Toast.makeText(SignUpInfoActivity.this, "Password entered did not match", Toast.LENGTH_SHORT).show();
                     confirmPassword.setText("");
-                } else if (emailExists(email.getText().toString())){
-                    Toast.makeText(SignUpInfoActivity.this, "Email already registered, please choose a different email", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     String userFirstname = firstname.getText().toString();
                     String userLastname = lastname.getText().toString();
                     String userEmail = email.getText().toString();
@@ -110,8 +107,8 @@ public class SignUpInfoActivity extends AppCompatActivity {
                             Map<String, String> params = new HashMap<>();
                             params.put("firstname", userFirstname );
                             params.put("lastname", userLastname);
-                            params.put("phone", userEmail);
-                            params.put("email", userPhone );
+                            params.put("phone",  userPhone);
+                            params.put("email",userEmail);
                             params.put("password", userPassword );
                             params.put("username", userUsername);
 
@@ -121,9 +118,6 @@ public class SignUpInfoActivity extends AppCompatActivity {
 
                     RequestHandler.getInstance(SignUpInfoActivity.this).addToRequestQueue(stringRequest);
 
-
-
-                    Toast.makeText(SignUpInfoActivity.this, "User now Registered", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -133,50 +127,6 @@ public class SignUpInfoActivity extends AppCompatActivity {
 
     }
 
-    public boolean emailExists(String email){
-        StringRequest stringRequest = new StringRequest(
-                Request.Method.POST,
-                Constants.URL_EMAILEXIST,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        try {
-                            JSONObject emailExistObj =new JSONObject(response);
-                            emailCheck = emailExistObj.getInt("message");
-
-                        } catch (JSONException e) {
-                            Toast.makeText(SignUpInfoActivity.this, "Error JSON : Message -> " + e, Toast.LENGTH_SHORT).show();;
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                }
-
-        ){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("email", email);
-                return params;
-            }
-        };
-
-        RequestHandler.getInstance(SignUpInfoActivity.this).addToRequestQueue(stringRequest);
-
-        if (emailCheck == 0){
-            return true;
-        } else {
-            return false;
-        }
-
-
-
-    }
     public static boolean isEmailValid(String email) {
         String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
