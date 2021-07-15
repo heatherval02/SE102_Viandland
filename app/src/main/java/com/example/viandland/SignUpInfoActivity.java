@@ -37,7 +37,6 @@ public class SignUpInfoActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         String username =  getIntent().getStringExtra("username");
-
         firstname = findViewById(R.id.firstname);
         lastname = findViewById(R.id.lastname);
         phone = findViewById(R.id.phone);
@@ -70,6 +69,60 @@ public class SignUpInfoActivity extends AppCompatActivity {
                     Toast.makeText(SignUpInfoActivity.this, "Email already registered, please choose a different email", Toast.LENGTH_SHORT).show();
                 }
                 else {
+                    String userFirstname = firstname.getText().toString();
+                    String userLastname = lastname.getText().toString();
+                    String userEmail = email.getText().toString();
+                    String userPhone =phone.getText().toString();
+                    String userPassword = confirmPassword.getText().toString();
+                    String userUsername = username;
+
+
+                    StringRequest stringRequest = new StringRequest(
+                            Request.Method.POST,
+                            Constants.URL_ADDUSER,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+
+                                    try {
+                                        JSONObject messageObj = new JSONObject(response);
+
+                                        Toast.makeText(SignUpInfoActivity.this, messageObj.getString("message"), Toast.LENGTH_SHORT).show();
+
+
+                                    } catch (JSONException e) {
+                                        Toast.makeText(SignUpInfoActivity.this, "Error on JSON : " + e, Toast.LENGTH_SHORT).show();
+                                    }
+
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            }
+
+                    ){
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+
+                            Map<String, String> params = new HashMap<>();
+                            params.put("firstname", userFirstname );
+                            params.put("lastname", userLastname);
+                            params.put("phone", userEmail);
+                            params.put("email", userPhone );
+                            params.put("password", userPassword );
+                            params.put("username", userUsername);
+
+                            return params;
+                        }
+                    };
+
+                    RequestHandler.getInstance(SignUpInfoActivity.this).addToRequestQueue(stringRequest);
+
+
+
                     Toast.makeText(SignUpInfoActivity.this, "User now Registered", Toast.LENGTH_SHORT).show();
                 }
 
