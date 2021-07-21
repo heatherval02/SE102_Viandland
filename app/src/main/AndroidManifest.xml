@@ -3,6 +3,7 @@
     package="com.example.viandland">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,8 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Viandland"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".SignUpInfoActivity"></activity>
+        <activity android:name=".MainpageDashboard"></activity>
+        <activity android:name=".OnboardingSlider" />
+        <activity android:name=".SignUpInfoActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
