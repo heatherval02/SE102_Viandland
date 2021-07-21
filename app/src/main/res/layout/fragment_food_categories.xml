@@ -12,6 +12,7 @@
         android:text="Food Categories"
         android:gravity="center"
         android:textSize="40sp"
+        android:textStyle="italic"
         />
 
 </FrameLayout>
