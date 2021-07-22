@@ -3,16 +3,17 @@ package com.example.viandland;
 public class ModelTrendingRecipes {
 
     int recipe_id;
-    String recipe_name,recipe_date_added, recipe_cook, recipe_image, cook_image, cook_name;
+    String recipe_name,recipe_date_added, recipe_description, recipe_image, cook_image, cook_name;
 
-    public ModelTrendingRecipes(int recipe_id, String recipe_name, String recipe_date_added, String recipe_cook, String recipe_image, String cook_image, String cook_name) {
+    public ModelTrendingRecipes(int recipe_id, String recipe_name, String recipe_date_added, String recipe_description, String recipe_image, String cook_image, String cook_name) {
         this.recipe_id = recipe_id;
         this.recipe_name = recipe_name;
         this.recipe_date_added = recipe_date_added;
-        this.recipe_cook = recipe_cook;
+        this.recipe_description = recipe_description;
         this.recipe_image = recipe_image;
         this.cook_image = cook_image;
         this.cook_name = cook_name;
+
     }
 
     public int getRecipe_id() {
@@ -39,12 +40,12 @@ public class ModelTrendingRecipes {
         this.recipe_date_added = recipe_date_added;
     }
 
-    public String getRecipe_cook() {
-        return recipe_cook;
+    public String getRecipe_description() {
+        return recipe_description;
     }
 
-    public void setRecipe_cook(String recipe_cook) {
-        this.recipe_cook = recipe_cook;
+    public void setRecipe_description(String recipe_description) {
+        this.recipe_description = recipe_description;
     }
 
     public String getRecipe_image() {
@@ -70,4 +71,6 @@ public class ModelTrendingRecipes {
     public void setCook_name(String cook_name) {
         this.cook_name = cook_name;
     }
+
+
 }

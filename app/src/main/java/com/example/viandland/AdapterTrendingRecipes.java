@@ -61,7 +61,7 @@ public class AdapterTrendingRecipes extends PagerAdapter {
 
         recipeName.setText(trendingRecipesModel.getRecipe_name());
 
-        recipeCook.setText(trendingRecipesModel.getRecipe_cook());
+        recipeCook.setText(trendingRecipesModel.getCook_name());
 
         recipeDateAdded.setText(trendingRecipesModel.getRecipe_date_added());
 

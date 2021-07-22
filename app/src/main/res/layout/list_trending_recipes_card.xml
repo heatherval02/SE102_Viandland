@@ -51,7 +51,7 @@
                             android:id="@+id/ownerImage"
                             android:layout_width="90dp"
                             android:layout_height="90dp"
-                            android:scaleType="fitCenter"
+                            android:scaleType="centerCrop"
                             android:background="@drawable/dashboard"/>
                     </androidx.cardview.widget.CardView>
 
@@ -64,7 +64,8 @@
                         android:layout_toRightOf="@+id/ownerImageContainer"
                         style="@style/TextAppearance.AppCompat.Medium"
                         android:paddingLeft="10dp"
-                        android:paddingBottom="10dp"/>
+                        android:paddingBottom="10dp"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:id="@+id/recipeCook"
