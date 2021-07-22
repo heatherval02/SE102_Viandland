@@ -37,18 +37,23 @@ public class MainpageDashboard extends AppCompatActivity {
                 switch (item.getId()){
 
                     case 1:
-                        fragment = new Food_categoriesFragment();
+                        fragment = new FragmentDashboard();
                         break;
 
                     case 2:
-                        fragment = new Food_infoFragment();
+                        fragment = new FragmentCategories();
                         break;
 
                     case 3:
-                        fragment = new FavoritesFragment();
+                        fragment = new FragmentInfo();
                         break;
 
                     case 4:
+                        fragment = new FragmentFavorites();
+                        break;
+
+                    case 5:
+
                         fragment = new ProfileFragment();
                         break;
 
@@ -58,7 +63,7 @@ public class MainpageDashboard extends AppCompatActivity {
             }
         });
 
-        bottomNavigation.show(2,true);
+        bottomNavigation.show(1,true);
 
         bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
             @Override
