@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Food_infoFragment#newInstance} factory method to
+ * Use the {@link FragmentFavorites#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Food_infoFragment extends Fragment {
+public class FragmentFavorites extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +24,7 @@ public class Food_infoFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Food_infoFragment() {
+    public FragmentFavorites() {
         // Required empty public constructor
     }
 
@@ -34,11 +34,11 @@ public class Food_infoFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Food_infoFragment.
+     * @return A new instance of fragment FavoritesFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Food_infoFragment newInstance(String param1, String param2) {
-        Food_infoFragment fragment = new Food_infoFragment();
+    public static FragmentFavorites newInstance(String param1, String param2) {
+        FragmentFavorites fragment = new FragmentFavorites();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +59,6 @@ public class Food_infoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_food_info, container, false);
+        return inflater.inflate(R.layout.fragment_favorites, container, false);
     }
 }

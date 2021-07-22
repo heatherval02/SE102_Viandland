@@ -34,7 +34,6 @@ public class SignUpInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_info);
-        getSupportActionBar().hide();
 
         String username =  getIntent().getStringExtra("username");
         firstname = findViewById(R.id.firstname);

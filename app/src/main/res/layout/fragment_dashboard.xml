@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentDashboard"
+    >
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/trendingRecipesContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_toLeftOf="@+id/seachRecipeButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:text="Trending Recipes"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/purple_200"
+                    style="@style/TextAppearance.AppCompat.Large"/>
+
+                <ImageView
+                    android:id="@+id/seachRecipeButton"
+                    android:layout_width="?actionBarSize"
+                    android:layout_height="?actionBarSize"
+                    android:src="@drawable/ic_baseline_arrow_forward_24"
+                    android:padding="15dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    />
+
+                <androidx.viewpager.widget.ViewPager
+                    android:layout_below="@+id/seachRecipeButton"
+                    android:id="@+id/trendingRecipesViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="310dp"
+                    android:layout_centerHorizontal="true"
+                    android:overScrollMode="never"
+                    android:clipToPadding="false"
+                    android:padding="10dp" />
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</RelativeLayout>
