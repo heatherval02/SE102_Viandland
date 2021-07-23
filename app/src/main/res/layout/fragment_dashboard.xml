@@ -91,13 +91,14 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="20dp"
+
         >
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/todaysRecipeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_notifications_active_24"
+            android:src="@drawable/ic_baseline_circle_notifications_24"
             />
     </RelativeLayout>
 
