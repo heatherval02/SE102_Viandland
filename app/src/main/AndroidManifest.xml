@@ -12,11 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Viandland"
         android:usesCleartextTraffic="true">
+
         <activity android:name=".MainpageDashboard"></activity>
-        <activity android:name=".OnboardingSlider" />
+
         <activity android:name=".SignUpInfoActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".SplashScreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

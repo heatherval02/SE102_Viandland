@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    tools:context=".SplashScreen">
+
+
+   <pl.droidsonroids.gif.GifImageView
+       android:id="@+id/splash_screen"
+       android:layout_marginTop="170dp"
+       android:layout_width="match_parent"
+       android:layout_height="284dp"
+       android:src="@drawable/splashscreenfood" />
+
+   <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/purple_700"
+                android:text="Welcome to "
+                android:layout_marginTop="160dp"
+                android:layout_centerHorizontal="true"
+                android:textStyle="italic"
+                android:textSize="28sp"
+                android:layout_below="@id/splash_screen"
+                android:id="@+id/titlename_1"
+                />
+
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="10dp"
+             android:text="VIANDLAND"
+             android:textSize="35sp"
+             android:textStyle="bold"
+             android:textColor="@color/purple_700"
+             android:layout_centerHorizontal="true"
+             android:layout_below="@id/titlename_1"
+             />
+
+
+
+
+</RelativeLayout>

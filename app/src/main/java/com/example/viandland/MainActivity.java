@@ -24,6 +24,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
+
     TextView signUpLink;
     EditText usernameInputText, passwordInputText;
     Button loginBtn;
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
     usernameInputText = findViewById(R.id.usernameInputText);
     passwordInputText = findViewById(R.id.passwordInputText);

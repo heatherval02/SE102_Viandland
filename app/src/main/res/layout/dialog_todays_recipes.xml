@@ -5,7 +5,6 @@
     android:layout_width="350dp"
     android:layout_height="475dp"
     android:background="@drawable/dilago_todays_recipe_background"
-    android:padding="5dp"
     android:layout_gravity="center"
     >
 
