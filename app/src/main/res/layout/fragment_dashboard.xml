@@ -70,7 +70,7 @@
                     />
 
                 <androidx.viewpager.widget.ViewPager
-                    android:layout_below="@+id/seachRecipeButton"
+                    android:layout_below="@+id/recentlyAddedRecipeText"
                     android:id="@+id/recentlyAddedRecipesViewPager"
                     android:layout_width="match_parent"
                     android:layout_height="310dp"
@@ -78,6 +78,8 @@
                     android:overScrollMode="never"
                     android:clipToPadding="false"
                     android:padding="10dp" />
+
+
 
 
             </RelativeLayout>
