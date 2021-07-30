@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/purple_700"
     tools:context=".MainActivity">
 
     <TextView
@@ -13,7 +14,7 @@
         android:text="WELCOME"
         android:textSize="40sp"
         android:textStyle="bold"
-        android:textColor="@color/purple_700"
+        android:textColor="@color/white"
         android:layout_marginTop="200dp"
         android:layout_marginStart="15dp"
         android:paddingTop="10dp"
@@ -30,7 +31,7 @@
         android:layout_height="wrap_content"
         android:text="Let's get started"
         android:textSize="25sp"
-        android:textColor="@color/purple_700"
+        android:textColor="@color/white"
         android:layout_marginStart="15dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
@@ -55,6 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Username or email"
+            android:textColor="@color/purple_700"
             android:paddingStart="10dp"
             android:background="@drawable/login_edittext_bg"
             android:textCursorDrawable="@drawable/login_corner"/>
@@ -76,6 +78,7 @@
             android:id="@+id/passwordInputText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:textColor="@color/purple_700"
             android:hint="Password"
             android:inputType="textPassword"
             android:paddingStart="10dp"
@@ -105,6 +108,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/loginBtn"
         android:text="Click here to sign up"
+        android:textColor="@color/white"
         android:textAlignment="center"
         android:padding="10dp"/>
 
