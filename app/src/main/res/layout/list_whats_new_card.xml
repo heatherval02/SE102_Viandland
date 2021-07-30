@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:layout_margin="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/trendingRecipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:elevation="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/trendingRecipeImageContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:background="@drawable/dashboard"
+                    app:cardCornerRadius="10dp">
+
+                    <ImageView
+                        android:id="@+id/trendingRecipeImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:scaleType="centerCrop"/>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <RelativeLayout
+                    android:id="@+id/recipeDescContainer"
+                    android:layout_below="@+id/trendingRecipeImageContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/ownerImageContainer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="10dp">
+                        <ImageView
+                            android:id="@+id/ownerImage"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:scaleType="centerCrop"
+                            />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/recipeName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:text="Recipe Name"
+                        android:layout_toRightOf="@+id/ownerImageContainer"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:paddingLeft="10dp"
+                        android:paddingBottom="10dp"
+                        android:maxLines="1"/>
+
+                    <TextView
+                        android:id="@+id/recipeCook"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Chef: "
+                        android:layout_below="@+id/recipeName"
+                        android:layout_toRightOf="@+id/ownerImageContainer"
+                        style="@style/TextAppearance.AppCompat.Small"
+                        android:paddingLeft="10dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/recipeDateAdded"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Date Added "
+                        android:layout_below="@+id/recipeCook"
+                        android:layout_toRightOf="@+id/ownerImageContainer"
+                        style="@style/TextAppearance.AppCompat.Small"
+                        android:paddingLeft="10dp"
+                        android:paddingBottom="10dp"/>
+
+
+
+
+                </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+
+
+
+
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
