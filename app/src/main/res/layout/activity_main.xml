@@ -8,11 +8,14 @@
 
     <TextView
         android:id="@+id/loginText"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LOGIN"
-        android:textAlignment="center"
-        style="@style/TextAppearance.AppCompat.Large"
+        android:text="WELCOME"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textColor="@color/purple_700"
+        android:layout_marginTop="200dp"
+        android:layout_marginStart="15dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,31 +23,82 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <EditText
-        android:id="@+id/usernameInputText"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/loginText1"
+        android:layout_below="@id/loginText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/loginText"
-        android:hint="Username or email"
-        android:padding="10dp"
-        android:background="@android:drawable/editbox_background"/>
+        android:text="Let's get started"
+        android:textSize="25sp"
+        android:textColor="@color/purple_700"
+        android:layout_marginStart="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    <EditText
-        android:id="@+id/passwordInputText"
+    <soup.neumorphism.NeumorphCardView
+        style="@style/Widget.Neumorph.CardView"
+        android:id="@+id/usernameInputText1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/usernameInputText"
-        android:padding="10dp"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:background="@android:drawable/editbox_background"/>\
-    <Button
-        android:id="@+id/loginBtn"
+        android:layout_height="80dp"
+        android:layout_below="@+id/loginText1"
+        android:layout_marginTop="10dp"
+        app:neumorph_shapeType="pressed"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <EditText
+            android:id="@+id/usernameInputText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Username or email"
+            android:paddingStart="10dp"
+            android:background="@drawable/login_edittext_bg"
+            android:textCursorDrawable="@drawable/login_corner"/>
+
+    </soup.neumorphism.NeumorphCardView>
+
+    <soup.neumorphism.NeumorphCardView
+        style="@style/Widget.Neumorph.CardView"
+        android:id="@+id/password2"
+        android:layout_below="@id/usernameInputText1"
         android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        app:neumorph_shapeType="pressed"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <EditText
+            android:id="@+id/passwordInputText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingStart="10dp"
+            android:background="@drawable/login_edittext_bg"
+            android:textCursorDrawable="@drawable/login_corner"/>
+
+    </soup.neumorphism.NeumorphCardView>
+
+
+    <soup.neumorphism.NeumorphButton
+        style="@style/Widget.Neumorph.Button"
+        android:layout_below="@id/password2"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:layout_below="@+id/passwordInputText"
-        android:padding="10dp"/>
+        android:textColor="@color/purple_700"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/loginBtn"
+        />
+
     <TextView
         android:id="@+id/signUpLink"
         android:layout_width="match_parent"
