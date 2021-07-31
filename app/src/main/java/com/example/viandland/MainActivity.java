@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     EditText usernameInputText, passwordInputText;
     Button loginBtn;
 
+    SharedPrefManager userCredentials;
 
 
 
@@ -37,7 +39,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        if (SharedPrefManager.getInstance(this).isLoggedIn()){
+            finish();
+            Intent newIntent = new Intent(MainActivity.this, MainpageDashboard.class);
+            startActivity(newIntent);
+        }
 
     usernameInputText = findViewById(R.id.usernameInputText);
     passwordInputText = findViewById(R.id.passwordInputText);
@@ -63,14 +69,12 @@ public class MainActivity extends AppCompatActivity {
 
                                 try {
                                     JSONObject messageObj = new JSONObject(response);
-
-                                    Intent newIntent;
-
-                                    newIntent = new Intent(MainActivity.this, MainpageDashboard.class);
-                                    startActivity(newIntent);
-
-                                    Toast.makeText(MainActivity.this, messageObj.getString("message"), Toast.LENGTH_SHORT).show();
-
+                                    if (messageObj.getString("message").equalsIgnoreCase("access granted")){
+                                        validateUser(username, password);
+                                    }
+                                    else {
+                                        Toast.makeText(MainActivity.this, "Access denied please double check your credentials", Toast.LENGTH_SHORT).show();
+                                    }
 
                                 } catch (JSONException e) {
                                     Toast.makeText(MainActivity.this, "Error on JSON : " + e, Toast.LENGTH_SHORT).show();
@@ -116,5 +120,50 @@ public class MainActivity extends AppCompatActivity {
         }
     });
 
+    }
+
+    private void validateUser(String username, String password) {
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_GETUSERDATA,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONArray responseArray = new JSONArray(response);
+
+                            for (int i = 0; i < responseArray.length();i++){
+                                JSONObject userObj = responseArray.getJSONObject(i);
+                                userCredentials.getInstance(getApplicationContext()).userLogin(userObj.getInt("uid"), userObj.getString("username"), userObj.getString("email"), userObj.getString("fullname"), userObj.getString("profile_img"));
+                                Intent newIntent = new Intent(MainActivity.this, MainpageDashboard.class);
+                                startActivity(newIntent);
+                            }
+
+                        } catch (JSONException e) {
+                            Toast.makeText(MainActivity.this, "Error on JSON : " + e, Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<>();
+                params.put("username", username);
+                params.put("password", password);
+                return params;
+            }
+        };
+
+        RequestHandler.getInstance(MainActivity.this).addToRequestQueue(stringRequest);
     }
 }
