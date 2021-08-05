@@ -5,7 +5,6 @@ public class ModelSearchCategoryResults {
     int recipe_id;
     String recipe_name, recipe_description, recipe_date_added, recipe_cook, recipe_prep_time, recipe_image, category;
 
-
     public ModelSearchCategoryResults(int recipe_id, String recipe_name, String recipe_description, String recipe_date_added, String recipe_cook, String recipe_prep_time, String recipe_image, String category) {
         this.recipe_id = recipe_id;
         this.recipe_name = recipe_name;

@@ -6,11 +6,18 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import static android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,6 +71,16 @@ public class FragmentCategories extends Fragment {
     private RecyclerView recyclerView;
     private AdapterFoodCategories adapterFoodCategories;
 
+
+    EditText searchInputText;
+
+
+    ///This is for the search Results RecylerView
+    RecyclerView searchResultsRecyclerView;
+    AdapterSearchCategory searchCategoryAdapter;
+    List<ModelSearchCategoryResults> modelSearchCategoryResultsList;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -83,8 +100,32 @@ public class FragmentCategories extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(mview.getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(adapterFoodCategories);
 
+
+        //Results RecyclerView Implementatioins
+        modelSearchCategoryResultsList = new ArrayList<>();
+
+        searchResultsRecyclerView = mview.findViewById(R.id.categoryResultsRecyclerView);
+        searchResultsRecyclerView.setHasFixedSize(true);
+        searchResultsRecyclerView.setLayoutManager(new LinearLayoutManager(mview.getContext()));
+
+        modelSearchCategoryResultsList.add(new ModelSearchCategoryResults(1,"Adobo","MAsarap","08/05/2021","Jay","30","https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/chickenadobo-1528749020.jpg","Dinner"));
+        modelSearchCategoryResultsList.add(new ModelSearchCategoryResults(1,"Adobo","MAsarap","08/05/2021","Jay","30","https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/chickenadobo-1528749020.jpg","Dinner"));
+        modelSearchCategoryResultsList.add(new ModelSearchCategoryResults(1,"Adobo","MAsarap","08/05/2021","Jay","30","https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/chickenadobo-1528749020.jpg","Dinner"));
+
+
+        searchCategoryAdapter = new AdapterSearchCategory(getContext(), modelSearchCategoryResultsList);
+        searchResultsRecyclerView.setAdapter(searchCategoryAdapter);
+
+        searchInputText = mview.findViewById(R.id.searchInput);
+
+        //Next
         return mview;
 
 
     }
+    private void searchCategory(String searchKeyword) {
+
+    }
+
+
 }

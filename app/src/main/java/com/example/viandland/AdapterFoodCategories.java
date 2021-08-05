@@ -57,6 +57,7 @@ public class AdapterFoodCategories extends RecyclerView.Adapter<AdapterFoodCateg
             holder.linearLayout.setBackgroundResource(R.drawable.rv_selectedbg);
         }
 
+
     }
 
     @Override

@@ -14,38 +14,37 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class AdapterSearchCategoryResults extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class AdapterSearchCategory extends RecyclerView.Adapter<AdapterSearchCategory.AdapterSearchCategoryViewHolder> {
 
     Context mCtx;
     List<ModelSearchCategoryResults> modelSearchCategoryResultsList;
 
-    public AdapterSearchCategoryResults(Context mCtx, List<ModelSearchCategoryResults> modelSearchCategoryResultsList) {
+    public AdapterSearchCategory(Context mCtx, List<ModelSearchCategoryResults> modelSearchCategoryResultsList) {
         this.mCtx = mCtx;
         this.modelSearchCategoryResultsList = modelSearchCategoryResultsList;
     }
 
+
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
+    public AdapterSearchCategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.list_categories_results, null);
-        return new AdapterSearchCategoryResults.AdapterSearchCategoryViewHolder(view);
+        return new AdapterSearchCategory.AdapterSearchCategoryViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdapterSearchCategoryViewHolder holder, int position) {
 
-        ModelSearchCategoryResults searchResults = modelSearchCategoryResultsList.get(position);
+        ModelSearchCategoryResults modelCategoryResults = modelSearchCategoryResultsList.get(position);
+
         Glide.with(mCtx)
-                .load(searchResults.getRecipe_image())
+                .load( modelCategoryResults.getRecipe_image())
                 //.placeholder(R.drawable.loader)
                 .into(holder.recipeImage);
-
-        holder.recipeTitle.setText(modelrecentlyAdded.getRecipe_name());
-        holder.recipeCook.setText(modelrecentlyAdded.getCook_name());
-        holder.recipeDateAdded.setText(modelrecentlyAdded.getRecipe_date_added());
-
+        holder.recipeTitle.setText( modelCategoryResults.getRecipe_name());
+        holder.recipeCook.setText( modelCategoryResults.getRecipe_cook());
+        holder.recipeDateAdded.setText( modelCategoryResults.getRecipe_date_added());
 
     }
 
@@ -55,21 +54,17 @@ public class AdapterSearchCategoryResults extends RecyclerView.Adapter<RecyclerV
     }
 
     class AdapterSearchCategoryViewHolder extends RecyclerView.ViewHolder{
-
         ImageView recipeImage;
         TextView recipeTitle,recipeCook, recipeDateAdded;
 
         public AdapterSearchCategoryViewHolder(@NonNull View itemView) {
             super(itemView);
-
             recipeImage = itemView.findViewById(R.id.recipeImage);
             recipeTitle = itemView.findViewById(R.id.recipeTitle);
             recipeCook = itemView.findViewById(R.id.recipeCook);
             recipeDateAdded = itemView.findViewById(R.id.recipeDateAdded);
 
-
         }
+
     }
-
-
 }
