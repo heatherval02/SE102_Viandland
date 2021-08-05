@@ -79,8 +79,8 @@ public class FragmentCategories extends Fragment {
         ViewGroup mview = (ViewGroup) inflater.inflate(R.layout.fragment_food_categories, container, false);
 
         recyclerView = mview.findViewById(R.id.rv_1);
-        adapterFoodCategories = new AdapterFoodCategories(item);
-    //    recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        adapterFoodCategories = new AdapterFoodCategories(item, mview.getContext());
+        recyclerView.setLayoutManager(new LinearLayoutManager(mview.getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(adapterFoodCategories);
 
         return mview;

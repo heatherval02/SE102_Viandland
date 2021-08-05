@@ -37,6 +37,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class FragmentDashboard extends Fragment {
@@ -86,15 +87,12 @@ public class FragmentDashboard extends Fragment {
     ArrayList<ModelTrendingRecipes> modelTrendingRecipesArrayList;
 
 
-    ViewPager recentlyAddedViewPager;
+   //Recently Added Recipes
+
+    RecyclerView recyclerView;
     AdapterWhatsNew whatsNewAdapter;
-    ArrayList<ModelWhatsNew> modelWhatsNewArrayList;
+    List<ModelWhatsNew> modelWhatsNewList;
 
-    FloatingActionButton todaysRecipeButton;
-
-
-    Calendar calendar = Calendar.getInstance();
-    String dayToday = "";
 
 
     @Override
@@ -102,57 +100,6 @@ public class FragmentDashboard extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
-
-        //Get the Day of the week
-        int day = calendar.get(Calendar.DAY_OF_WEEK);
-
-        switch (day) {
-            case Calendar.SUNDAY:
-                dayToday = "Sunday";
-                break;
-            case Calendar.MONDAY:
-                dayToday = "Monday";
-                break;
-            case Calendar.TUESDAY:
-                dayToday = "Tuesday";
-                break;
-            case Calendar.WEDNESDAY:
-                dayToday = "Wednesday";
-                break;
-            case Calendar.THURSDAY:
-                dayToday = "Thursday";
-                break;
-            case Calendar.FRIDAY:
-                dayToday = "Friday";
-                break;
-            case Calendar.SATURDAY:
-                dayToday = "Saturday";
-                break;
-
-        }
-
-
-
-        recentlyAddedViewPager = view.findViewById(R.id.recentlyAddedRecipesViewPager);
-        loadRecentlyAddedCards();
-        recentlyAddedViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-
-
 
 
 
@@ -175,102 +122,23 @@ public class FragmentDashboard extends Fragment {
             }
         });
 
+        recyclerView = (RecyclerView) view.findViewById(R.id.recentlyAddedRecipesRecylerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+
+        loadRecentlyAddedCards();
+
+
     // For Floating Cutton Function
-
-        todaysRecipeButton = view.findViewById(R.id.todaysRecipeButton);
-        todaysRecipeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                TextView closeDialogButton, todaysRecipeName, todaysRecipeCook;
-                ImageView todaysRecipeImage;
-
-                AlertDialog.Builder addFundDialog = new AlertDialog.Builder(getContext());
-                View mView = getLayoutInflater().inflate(R.layout.dialog_todays_recipes, null);
-
-                closeDialogButton = mView.findViewById(R.id.closeDialogButton);
-                todaysRecipeName = mView.findViewById(R.id.todaysRecipeName);
-                todaysRecipeCook = mView.findViewById(R.id.todaysRecipeCook);
-                todaysRecipeImage = mView.findViewById(R.id.todaysRecipeImage);
-
-
-                StringRequest stringRequest = new StringRequest(
-                        Request.Method.POST,
-                        Constants.URL_GETTODAYSRECIPES,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-
-                                try {
-                                    JSONObject jsonObject = new JSONObject(response);
-                                    String recipeId = String.valueOf(jsonObject.getString("recipe_id"));
-                                    todaysRecipeName.setText(jsonObject.getString("recipe_name"));
-                                    todaysRecipeCook.setText(jsonObject.getString("recicpe_cook"));
-                                    Glide.with(getContext())
-                                            .load(jsonObject.getString("recipe_img"))
-                                            .placeholder(R.drawable.favorites)
-                                            .into(todaysRecipeImage);
-
-                                    todaysRecipeImage.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            Toast.makeText(getContext(), recipeId, Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                    Toast.makeText(getContext(), "Error in Json" + e, Toast.LENGTH_LONG).show();
-                                }
-
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                            }
-                        }
-
-                ){
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-
-                        Map<String, String> params = new HashMap<>();
-                        params.put("dayToday", dayToday);
-
-                        return params;
-                    }
-                };
-
-                RequestHandler.getInstance(getContext()).addToRequestQueue(stringRequest);
-
-
-
-                addFundDialog.setView(mView);
-                AlertDialog dialog = addFundDialog.create();
-
-                closeDialogButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-
-                dialog.show();
-
-            }
-        });
-
-
 
         return view;
     }
 
-    private void loadRecentlyAddedCards() {
-        modelWhatsNewArrayList = new ArrayList<>();
 
-       // modelWhatsNewArrayList.add(new ModelWhatsNew(1,"Adobo","07/22/2021","This is a recipe post for Filipino Pork Adobo. It is a dish composed of pork slices cooked in soy sauce, vinegar, and garlic. There are version wherein onions are also added. Adobo is a popular dish in the Philippines, along with Sinigang.","https://panlasangpinoy.com/wp-content/uploads/2009/08/Best-Pork-Adobo-Recipe.jpg"," https://www.google.com/imgres?imgurl=https%3A%2F%2Fthumbs.dreamstime.com%2Fb%2Fadmin-sign-laptop-icon-stock-vector-166205404.jpg&imgrefurl=https%3A%2F%2Fwww.dreamstime.com%2Fillustration%2Fadmin-sign.html&tbnid=KgDkgGArNaGaCM&vet=12ahUKEwjAgZvz6frxAhUCYZQKHZ7PBS4QMygCegUIARDRAQ..i&docid=PxITScl98joWHM&w=800&h=800&q=admin&ved=2ahUKEwjAgZvz6frxAhUCYZQKHZ7PBS4QMygCegUIARDRAQ","Juan Dela Cruz"));
+
+    private void loadRecentlyAddedCards() {
+
+        modelWhatsNewList = new ArrayList<>();
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.URL_GETWHATSNEWRECIPES,
                 new Response.Listener<String>() {
@@ -291,11 +159,11 @@ public class FragmentDashboard extends Fragment {
                                 String cook_name = recipesObject.getString("cook_name");
                                 String cook_image = recipesObject.getString("cook_image");
 
-                                modelWhatsNewArrayList.add(new ModelWhatsNew(recipe_id,recipe_name,recipe_date_added,recipe_description,recipe_image,cook_image,cook_name));
+                                modelWhatsNewList.add(new ModelWhatsNew(recipe_id,recipe_name,recipe_date_added,recipe_description,recipe_image,cook_image,cook_name));
 
                             }
-                            whatsNewAdapter = new AdapterWhatsNew(getContext(), modelWhatsNewArrayList);
-                            recentlyAddedViewPager.setAdapter(whatsNewAdapter);
+                            whatsNewAdapter = new AdapterWhatsNew(modelWhatsNewList, getContext());
+                            recyclerView.setAdapter(whatsNewAdapter);
 
 
                         } catch (JSONException e) {
@@ -315,7 +183,6 @@ public class FragmentDashboard extends Fragment {
 
         Volley.newRequestQueue(getContext()).add(stringRequest);
 
-        recentlyAddedViewPager.setPadding(10, 0, 10,0);
 
     }
 

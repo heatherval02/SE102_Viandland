@@ -8,78 +8,111 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="15dp"
-        android:textColor="@color/purple_700"
-        android:id="@+id/textview1"
-        />
+            <RelativeLayout
+                android:id="@+id/navigationContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Viandlanders!"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_marginStart="90dp"
-        android:textColor="@color/purple_700"
-        android:id="@+id/textview2"
-        android:layout_marginTop="20dp"
+                <!-- TODO: Update blank fragment layout -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hello"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="15dp"
+                    android:textColor="@color/purple_700"
+                    android:id="@+id/textview1"
+                    />
 
-        />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Viandlanders!"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="90dp"
+                    android:textColor="@color/purple_700"
+                    android:id="@+id/textview2"
+                    android:layout_marginTop="20dp"
 
-    <TextView
-        android:id="@+id/textview3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Let's cook and start our day"
-        android:textSize="18sp"
-        android:layout_marginStart="15dp"
-        android:textStyle="italic"
-        android:textColor="@color/purple_700"
-        android:layout_below="@id/textview1"
+                    />
+
+                <TextView
+                    android:id="@+id/textview3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Let's cook and start our day"
+                    android:textSize="18sp"
+                    android:layout_marginStart="15dp"
+                    android:textStyle="italic"
+                    android:textColor="@color/purple_700"
+                    android:layout_below="@id/textview1"
 
 
-        />
+                    />
 
-        <EditText
-            android:id="@+id/edittext1"
-            android:layout_width="370dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="15dp"
-            android:textColor="@color/white"
-            android:hint="Search for a recipe..."
-            android:textColorHint="@color/white"
-            android:textSize="18sp"
-            android:layout_below="@id/textview3"
-            android:layout_marginTop="15dp"
-            android:paddingStart="20dp"
-            android:background="@drawable/search_bar_bg"
-            android:drawableEnd="@drawable/search_icon"
-            android:paddingRight="5dp"
-            />
+                <EditText
+                    android:id="@+id/edittext1"
+                    android:layout_width="370dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="15dp"
+                    android:textColor="@color/white"
+                    android:hint="Search for a recipe..."
+                    android:textColorHint="@color/white"
+                    android:textSize="18sp"
+                    android:layout_below="@id/textview3"
+                    android:layout_marginTop="15dp"
+                    android:paddingStart="20dp"
+                    android:background="@drawable/search_bar_bg"
+                    android:drawableEnd="@drawable/search_icon"
+                    android:paddingRight="5dp"
+                    />
 
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/rv_1"
-    android:layout_width="400dp"
-    android:layout_height="200dp"
-    android:layout_marginLeft="5dp"
-    android:layout_below="@id/edittext1"
-    android:layout_marginTop="15dp"
-    >
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_1"
+                    android:layout_width="400dp"
+                    android:layout_height="200dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_below="@id/edittext1"
+                    android:layout_marginTop="15dp"
+                    >
 
-</androidx.recyclerview.widget.RecyclerView>
+                </androidx.recyclerview.widget.RecyclerView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/resultsContainer"
+                android:layout_below="@+id/navigationContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/resultsText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:text="Results"
+                    style="@style/TextAppearance.AppCompat.Medium"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/categoryResultsRecyclerView"
+                    android:layout_below="@+id/resultsText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+
+
         </RelativeLayout>
+
+
+
     </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>

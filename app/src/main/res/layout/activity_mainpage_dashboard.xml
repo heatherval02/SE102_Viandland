@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainpageDashboard">
-    
+
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:id="@+id/frame_layout"
-        />
+        android:id="@+id/frame_layout" />
 
     <com.etebarian.meowbottomnavigation.MeowBottomNavigation
         android:layout_width="match_parent"
@@ -24,11 +24,4 @@
         app:mbn_countBackgroundColor="@color/purple_700"
         app:mbn_defaultIconColor="@color/white"
         app:mbn_backgroundBottomColor="@color/purple_700"/>
-
-
-
-
-
-
-
 </LinearLayout>

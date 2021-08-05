@@ -70,11 +70,6 @@ public class MainpageDashboard extends AppCompatActivity {
             public void onClickItem(MeowBottomNavigation.Model item) {
                 // display toast
 
-                Toast.makeText(getApplicationContext()
-                ,"You clicked" + item.getId()
-                        ,Toast.LENGTH_SHORT).show();
-
-
             }
         });
 

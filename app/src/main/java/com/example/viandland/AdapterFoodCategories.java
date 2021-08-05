@@ -1,11 +1,13 @@
 package com.example.viandland;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,11 +16,12 @@ import java.util.ArrayList;
 
 public class AdapterFoodCategories extends RecyclerView.Adapter<AdapterFoodCategories.RVViewHolder>{
 
+    Context mCtx;
     private ArrayList<ModelFoodCategories> items;
-    int row_index = 1;
+    int row_index = 0;
 
-
-    public AdapterFoodCategories(ArrayList<ModelFoodCategories> items) {
+    public AdapterFoodCategories(ArrayList<ModelFoodCategories> items, Context mCtx) {
+        this.mCtx = mCtx;
         this.items = items;
     }
 
@@ -47,8 +50,8 @@ public class AdapterFoodCategories extends RecyclerView.Adapter<AdapterFoodCateg
         });
 
         if (row_index == position){
-
             holder.linearLayout.setBackgroundResource(R.drawable.rv_bg);
+            Toast.makeText(mCtx, "Selected Button" + currentItem.getText(), Toast.LENGTH_SHORT).show();
         }
         else {
             holder.linearLayout.setBackgroundResource(R.drawable.rv_selectedbg);

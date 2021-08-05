@@ -1,17 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentInfo">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".FragmentInfo"
+    android:background="@drawable/recipe_background">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+        <RelativeLayout
+            android:id="@+id/todaysRecipeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:gravity="top"
+                android:text="Todays Recipe"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Food Information"
-        android:gravity="center"
-        android:textSize="40sp"
-        />
+        android:layout_below="@+id/todaysRecipeText">
 
-</FrameLayout>
+        <RelativeLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="?actionBarSize"
+                android:id="@+id/todaysRecipeContainer"
+                android:layout_width="350dp"
+                android:layout_height="500dp"
+                android:layout_centerInParent="true"
+                android:paddingBottom="30dp"
+                app:cardCornerRadius="10dp">
+
+                <ImageView
+                    android:id="@+id/recipeImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pork_adobo" />
+
+                <io.alterac.blurkit.BlurLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/TextAppearance.AppCompat.Small.Inverse"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_baseline_favorite_24"
+                        android:padding="15dp"
+                        android:text="0"
+                        android:textStyle="bold" />
+                </io.alterac.blurkit.BlurLayout>
+
+                <io.alterac.blurkit.BlurLayout
+                    android:id="@+id/blurLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    app:blk_fps="0">
+
+                    <TextView
+                        android:id="@+id/recipeName"
+                        style="@style/TextAppearance.AppCompat.Large.Inverse"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="15dp"
+                        android:paddingRight="40dp"
+                        android:paddingBottom="15dp"
+                        android:text="Recipe Name"
+                        android:textStyle="bold" />
+                </io.alterac.blurkit.BlurLayout>
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>
