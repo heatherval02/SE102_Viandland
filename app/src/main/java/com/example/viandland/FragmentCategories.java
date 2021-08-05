@@ -3,10 +3,14 @@ package com.example.viandland;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,13 +56,35 @@ public class FragmentCategories extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
+
         }
     }
+
+    private RecyclerView recyclerView;
+    private AdapterFoodCategories adapterFoodCategories;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        ArrayList<ModelFoodCategories> item = new ArrayList<>();
+        item.add(new ModelFoodCategories(R.drawable.breakfast,"Breakfast"));
+        item.add(new ModelFoodCategories(R.drawable.lunch,"Lunch"));
+        item.add(new ModelFoodCategories(R.drawable.dinner,"Dinner"));
+        item.add(new ModelFoodCategories(R.drawable.diet_food,"Healthy Meals"));
+        item.add(new ModelFoodCategories(R.drawable.snack,"Snacks"));
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_food_categories, container, false);
+        ViewGroup mview = (ViewGroup) inflater.inflate(R.layout.fragment_food_categories, container, false);
+
+        recyclerView = mview.findViewById(R.id.rv_1);
+        adapterFoodCategories = new AdapterFoodCategories(item);
+    //    recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setAdapter(adapterFoodCategories);
+
+        return mview;
+
+
     }
 }

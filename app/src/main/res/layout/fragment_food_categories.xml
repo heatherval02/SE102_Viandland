@@ -1,18 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FragmentCategories">
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Food Categories"
-        android:gravity="center"
-        android:textSize="40sp"
-        android:textStyle="italic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        android:textColor="@color/purple_700"
+        android:id="@+id/textview1"
         />
 
-</FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Viandlanders!"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginStart="90dp"
+        android:textColor="@color/purple_700"
+        android:id="@+id/textview2"
+        android:layout_marginTop="20dp"
+
+        />
+
+    <TextView
+        android:id="@+id/textview3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Let's cook and start our day"
+        android:textSize="18sp"
+        android:layout_marginStart="15dp"
+        android:textStyle="italic"
+        android:textColor="@color/purple_700"
+        android:layout_below="@id/textview1"
+
+
+        />
+
+        <EditText
+            android:id="@+id/edittext1"
+            android:layout_width="370dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:textColor="@color/white"
+            android:hint="Search for a recipe..."
+            android:textColorHint="@color/white"
+            android:textSize="18sp"
+            android:layout_below="@id/textview3"
+            android:layout_marginTop="15dp"
+            android:paddingStart="20dp"
+            android:background="@drawable/search_bar_bg"
+            android:drawableEnd="@drawable/search_icon"
+            android:paddingRight="5dp"
+            />
+
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/rv_1"
+    android:layout_width="400dp"
+    android:layout_height="200dp"
+    android:layout_marginLeft="5dp"
+    android:layout_below="@id/edittext1"
+    android:layout_marginTop="15dp"
+    >
+
+</androidx.recyclerview.widget.RecyclerView>
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>
