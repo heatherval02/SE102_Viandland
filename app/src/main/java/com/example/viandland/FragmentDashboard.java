@@ -132,6 +132,7 @@ public class FragmentDashboard extends Fragment {
         }
 
 
+
         recentlyAddedViewPager = view.findViewById(R.id.recentlyAddedRecipesViewPager);
         loadRecentlyAddedCards();
         recentlyAddedViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
