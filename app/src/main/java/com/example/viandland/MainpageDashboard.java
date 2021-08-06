@@ -77,9 +77,6 @@ public class MainpageDashboard extends AppCompatActivity {
             @Override
             public void onReselectItem(MeowBottomNavigation.Model item) {
 
-                Toast.makeText(getApplicationContext()
-                        ,"You Reselected" + item.getId()
-                        ,Toast.LENGTH_SHORT).show();
             }
         });
 

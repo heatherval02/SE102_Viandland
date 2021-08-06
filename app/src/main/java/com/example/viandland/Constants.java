@@ -10,5 +10,6 @@ public class Constants {
     public static final String URL_GETWHATSNEWRECIPES = ROOT_URL + "getWhatsNewRecipes.php";
     public static final String URL_GETTODAYSRECIPES = ROOT_URL + "getTodaysRecipes.php";
     public static final String URL_GETUSERDATA = ROOT_URL + "getUserData.php";
+    public static final String URL_GETSEARCHRESULTS = ROOT_URL + "getSearchResults.php";
 
 }

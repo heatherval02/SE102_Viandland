@@ -1,7 +1,9 @@
 package com.example.viandland;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,10 +14,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH;
 
@@ -68,63 +87,155 @@ public class FragmentCategories extends Fragment {
         }
     }
 
-    private RecyclerView recyclerView;
-    private AdapterFoodCategories adapterFoodCategories;
 
-
-    EditText searchInputText;
-
+    CardView lunchBtn, dinnerBtn, healthyMealsBtn, snacksBtn, breakfastBtn;
 
     ///This is for the search Results RecylerView
     RecyclerView searchResultsRecyclerView;
     AdapterSearchCategory searchCategoryAdapter;
     List<ModelSearchCategoryResults> modelSearchCategoryResultsList;
 
+    ProgressDialog progressDialog;
+
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        ArrayList<ModelFoodCategories> item = new ArrayList<>();
-        item.add(new ModelFoodCategories(R.drawable.breakfast,"Breakfast"));
-        item.add(new ModelFoodCategories(R.drawable.lunch,"Lunch"));
-        item.add(new ModelFoodCategories(R.drawable.dinner,"Dinner"));
-        item.add(new ModelFoodCategories(R.drawable.diet_food,"Healthy Meals"));
-        item.add(new ModelFoodCategories(R.drawable.snack,"Snacks"));
-
         // Inflate the layout for this fragment
         ViewGroup mview = (ViewGroup) inflater.inflate(R.layout.fragment_food_categories, container, false);
 
-        recyclerView = mview.findViewById(R.id.rv_1);
-        adapterFoodCategories = new AdapterFoodCategories(item, mview.getContext());
-        recyclerView.setLayoutManager(new LinearLayoutManager(mview.getContext(), LinearLayoutManager.HORIZONTAL, false));
-        recyclerView.setAdapter(adapterFoodCategories);
-
 
         //Results RecyclerView Implementatioins
-        modelSearchCategoryResultsList = new ArrayList<>();
 
+        modelSearchCategoryResultsList = new ArrayList<>();
         searchResultsRecyclerView = mview.findViewById(R.id.categoryResultsRecyclerView);
         searchResultsRecyclerView.setHasFixedSize(true);
         searchResultsRecyclerView.setLayoutManager(new LinearLayoutManager(mview.getContext()));
 
-        modelSearchCategoryResultsList.add(new ModelSearchCategoryResults(1,"Adobo","MAsarap","08/05/2021","Jay","30","https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/chickenadobo-1528749020.jpg","Dinner"));
-        modelSearchCategoryResultsList.add(new ModelSearchCategoryResults(1,"Adobo","MAsarap","08/05/2021","Jay","30","https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/chickenadobo-1528749020.jpg","Dinner"));
-        modelSearchCategoryResultsList.add(new ModelSearchCategoryResults(1,"Adobo","MAsarap","08/05/2021","Jay","30","https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/chickenadobo-1528749020.jpg","Dinner"));
+        progressDialog = new ProgressDialog(mview.getContext());
+        progressDialog.setMessage("Please wait");
+
+        searchFood("");
 
 
-        searchCategoryAdapter = new AdapterSearchCategory(getContext(), modelSearchCategoryResultsList);
-        searchResultsRecyclerView.setAdapter(searchCategoryAdapter);
 
-        searchInputText = mview.findViewById(R.id.searchInput);
+        breakfastBtn = mview.findViewById(R.id.breakfastBtn);
+        breakfastBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchFood("Breakfast");
+            }
+
+        });
+        lunchBtn = mview.findViewById(R.id.lunchBtn);
+        lunchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchFood("Lunch");
+
+
+            }
+        });
+        dinnerBtn = mview.findViewById(R.id.dinnerBtn);
+        dinnerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchFood("Dinner");
+            }
+        });
+        healthyMealsBtn = mview.findViewById(R.id. healthyMealsBtn);
+        healthyMealsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchFood("Healthy Meals");
+            }
+        });
+        snacksBtn = mview.findViewById(R.id.snacksBtn);
+        snacksBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchFood("Snacks");
+            }
+        });
+
+
+
 
         //Next
         return mview;
 
 
     }
-    private void searchCategory(String searchKeyword) {
 
+    private void searchFood(String keyword) {
+
+        String tags = keyword.trim();
+
+       modelSearchCategoryResultsList.clear();
+       progressDialog = new ProgressDialog(getContext());
+       progressDialog.setMessage("Please wait while retrieving your Recipes");
+
+       progressDialog.show();
+
+       StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_GETSEARCHRESULTS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        progressDialog.dismiss();
+
+                        try {
+                            JSONArray places = new JSONArray(response);
+
+                            for (int i = 0; i < places.length(); i++){
+                                JSONObject recipesObject = places.getJSONObject(i);
+
+                                int recipe_id = recipesObject.getInt("recipe_id");
+                                String recipe_name = recipesObject.getString("recipe_name");
+                                String recipe_date_added = recipesObject.getString("recipe_date_added");
+                                String recipe_description = recipesObject.getString("recipe_id");
+                                String recipe_prep_time = "Date Added : "+recipesObject.getString("recipe_description");
+                                String recipe_image = recipesObject.getString("recipe_image");
+                                String cook_name = "Cook : "+recipesObject.getString("cook_name");
+                                String category = recipesObject.getString("category");
+
+                                modelSearchCategoryResultsList.add(new ModelSearchCategoryResults(recipe_id, recipe_name,recipe_description,recipe_date_added,cook_name ,recipe_prep_time,recipe_image,category));
+
+                            }
+                            searchCategoryAdapter = new AdapterSearchCategory(getContext(), modelSearchCategoryResultsList);
+                            searchResultsRecyclerView.setAdapter(searchCategoryAdapter);
+
+                        } catch (JSONException e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(getContext(), "Error JSON "+ e, Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<>();
+                params.put("tags", tags);
+                return params;
+            }
+        };
+
+        RequestHandler.getInstance(getContext()).addToRequestQueue(stringRequest);
     }
 
 
