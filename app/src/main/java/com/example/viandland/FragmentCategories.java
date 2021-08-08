@@ -88,7 +88,7 @@ public class FragmentCategories extends Fragment {
     }
 
 
-    CardView lunchBtn, dinnerBtn, healthyMealsBtn, snacksBtn, breakfastBtn;
+    CardView lunchBtn, dinnerBtn, healthyMealsBtn, snacksBtn, breakfastBtn, kidsMealBtn;
 
     ///This is for the search Results RecylerView
     RecyclerView searchResultsRecyclerView;
@@ -158,6 +158,14 @@ public class FragmentCategories extends Fragment {
             @Override
             public void onClick(View v) {
                 searchFood("Snacks");
+            }
+        });
+
+        kidsMealBtn = mview.findViewById(R.id.kidsMealBtn);
+        kidsMealBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                searchFood("Kid's Meals");
             }
         });
 

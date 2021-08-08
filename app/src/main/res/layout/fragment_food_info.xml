@@ -66,6 +66,27 @@
                         android:padding="15dp"
                         android:text="0"
                         android:textStyle="bold" />
+
+                </io.alterac.blurkit.BlurLayout>
+
+                <io.alterac.blurkit.BlurLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    >
+
+                    <TextView
+                        android:id="@+id/recipe_day"
+                        android:layout_marginTop="410dp"
+                        style="@style/TextAppearance.AppCompat.Small.Inverse"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/purple_700"
+                        android:text="Monday"
+                        android:paddingStart="20dp"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
                 </io.alterac.blurkit.BlurLayout>
 
                 <io.alterac.blurkit.BlurLayout
@@ -81,9 +102,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="20dp"
-                        android:paddingTop="15dp"
+                        android:paddingTop="10dp"
                         android:paddingRight="40dp"
                         android:paddingBottom="15dp"
+                        android:textColor="@color/purple_700"
                         android:text="Recipe Name"
                         android:textStyle="bold" />
                 </io.alterac.blurkit.BlurLayout>

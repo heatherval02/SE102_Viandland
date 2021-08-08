@@ -59,6 +59,7 @@ public class ProfileFragment extends Fragment {
     }
 
     Button logoutBtn;
+    Button uploadBtn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -78,6 +79,15 @@ public class ProfileFragment extends Fragment {
                 Intent newIntent = new Intent(getContext(), MainActivity.class);
                 startActivity(newIntent);
 
+            }
+        });
+
+        uploadBtn = view.findViewById(R.id.uploadBtn);
+        uploadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent newIntent = new Intent(getContext(), UploadRecipeActivity.class);
+                startActivity(newIntent);
             }
         });
 

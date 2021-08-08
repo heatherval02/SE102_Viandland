@@ -91,7 +91,8 @@
                                             android:layout_width="75dp"
                                             android:layout_height="75dp"
                                             android:layout_gravity="center_horizontal"
-                                            android:src="@drawable/pork_adobo"/>
+                                            android:src="@drawable/breakfast"
+                                             />
                                         <TextView
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
@@ -117,7 +118,7 @@
                                             android:layout_width="75dp"
                                             android:layout_height="75dp"
                                             android:layout_gravity="center_horizontal"
-                                            android:src="@drawable/pork_adobo"/>
+                                            android:src="@drawable/lunch"/>
                                         <TextView
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
@@ -143,7 +144,7 @@
                                             android:layout_width="75dp"
                                             android:layout_height="75dp"
                                             android:layout_gravity="center_horizontal"
-                                            android:src="@drawable/pork_adobo"/>
+                                            android:src="@drawable/dinner"/>
                                         <TextView
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
@@ -169,7 +170,7 @@
                                             android:layout_width="75dp"
                                             android:layout_height="75dp"
                                             android:layout_gravity="center_horizontal"
-                                            android:src="@drawable/pork_adobo"/>
+                                            android:src="@drawable/diet_food"/>
                                         <TextView
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
@@ -196,7 +197,7 @@
                                             android:layout_width="75dp"
                                             android:layout_height="75dp"
                                             android:layout_gravity="center_horizontal"
-                                            android:src="@drawable/pork_adobo"/>
+                                            android:src="@drawable/snack"/>
                                         <TextView
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
@@ -206,6 +207,33 @@
                                             android:layout_marginBottom="20dp"/>
                                     </LinearLayout>
                                 </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/kidsMealBtn"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    app:cardCornerRadius="25dp"
+                                    android:layout_marginLeft="10dp">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical">
+                                        <de.hdodenhof.circleimageview.CircleImageView
+                                            android:layout_marginTop="20dp"
+                                            android:layout_width="75dp"
+                                            android:layout_height="75dp"
+                                            android:layout_gravity="center_horizontal"
+                                            android:src="@drawable/pork_adobo"/>
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Healthy Meals"
+                                            android:textAlignment="center"
+                                            android:layout_marginTop="20dp"
+                                            android:layout_marginBottom="20dp"/>
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
 
                             </LinearLayout>
                         </HorizontalScrollView>
