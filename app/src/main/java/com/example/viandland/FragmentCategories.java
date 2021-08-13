@@ -1,6 +1,7 @@
 package com.example.viandland;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -98,6 +100,7 @@ public class FragmentCategories extends Fragment {
     ProgressDialog progressDialog;
 
 
+    Button searchBtn;
 
 
 
@@ -107,6 +110,16 @@ public class FragmentCategories extends Fragment {
         // Inflate the layout for this fragment
         ViewGroup mview = (ViewGroup) inflater.inflate(R.layout.fragment_food_categories, container, false);
 
+        searchBtn = mview.findViewById(R.id.searchBtn);
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent newIntent = new Intent(mview.getContext(), SearchRecipeActivity.class);
+                startActivity(newIntent);
+
+            }
+        });
 
         //Results RecyclerView Implementatioins
 
@@ -135,8 +148,6 @@ public class FragmentCategories extends Fragment {
             @Override
             public void onClick(View v) {
                 searchFood("Lunch");
-
-
             }
         });
         dinnerBtn = mview.findViewById(R.id.dinnerBtn);

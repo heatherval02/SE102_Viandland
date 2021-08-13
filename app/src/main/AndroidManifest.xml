@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.viandland">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Viandland"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UploadRecipeActivity"></activity>
+        <activity android:name=".SearchRecipeActivity"/>
+        <activity android:name=".UploadRecipeActivity" />
+        <activity android:name=".ActivityAddSteps" />
+        <activity android:name=".ActivityAddIngredients" />
         <activity android:name=".MainpageDashboard" />
         <activity android:name=".SignUpInfoActivity" />
         <activity android:name=".SignUpActivity" />

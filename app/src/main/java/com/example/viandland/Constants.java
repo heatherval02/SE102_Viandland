@@ -12,4 +12,17 @@ public class Constants {
     public static final String URL_GETUSERDATA = ROOT_URL + "getUserData.php";
     public static final String URL_GETSEARCHRESULTS = ROOT_URL + "getSearchResults.php";
 
+    public static final String URL_GETFOODNAMESEARCH = ROOT_URL + "getRecipeNameSearchResults.php";
+    public static final String URL_UPLOADRECIPEIMAGE = ROOT_URL + "uploadRecipeImage.php";
+    public static final String URL_SAVERECIPEDATA = ROOT_URL + "saveRecipeData.php";
+
+    public static final String URL_ADDTORECIPES = ROOT_URL + "addToRecipes.php";
+    public static final String URL_GETRECIPEINGREDIENTS = ROOT_URL + "getRecipeIngredients.php";
+
+    public static final String URL_SETINGREDIENTS = ROOT_URL + "setIngredients.php";
+    public static final String URL_REMOVEINGREDIENTS = ROOT_URL + "removeIngredients.php";
+
+
+
+
 }

@@ -59,6 +59,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/favoritesText"
                         style="@style/TextAppearance.AppCompat.Small.Inverse"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -69,25 +70,6 @@
 
                 </io.alterac.blurkit.BlurLayout>
 
-                <io.alterac.blurkit.BlurLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    >
-
-                    <TextView
-                        android:id="@+id/recipe_day"
-                        android:layout_marginTop="410dp"
-                        style="@style/TextAppearance.AppCompat.Small.Inverse"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/purple_700"
-                        android:text="Monday"
-                        android:paddingStart="20dp"
-                        android:textSize="25sp"
-                        android:textStyle="bold" />
-
-                </io.alterac.blurkit.BlurLayout>
 
                 <io.alterac.blurkit.BlurLayout
                     android:id="@+id/blurLayout"
@@ -96,18 +78,38 @@
                     android:layout_gravity="bottom"
                     app:blk_fps="0">
 
-                    <TextView
-                        android:id="@+id/recipeName"
-                        style="@style/TextAppearance.AppCompat.Large.Inverse"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="10dp"
-                        android:paddingRight="40dp"
-                        android:paddingBottom="15dp"
-                        android:textColor="@color/purple_700"
-                        android:text="Recipe Name"
-                        android:textStyle="bold" />
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/dayToday"
+                            style="@style/TextAppearance.AppCompat.Large.Inverse"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="10dp"
+                            android:paddingRight="40dp"
+                            android:paddingBottom="15dp"
+                            android:textColor="@color/purple_700"
+                            android:text="Monday"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/recipeName"
+                            style="@style/TextAppearance.AppCompat.Large.Inverse"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="10dp"
+                            android:paddingRight="40dp"
+                            android:paddingBottom="15dp"
+                            android:textColor="@color/purple_700"
+                            android:text="Recipe Name"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
                 </io.alterac.blurkit.BlurLayout>
             </androidx.cardview.widget.CardView>
 

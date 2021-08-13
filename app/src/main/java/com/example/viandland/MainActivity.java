@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
     SharedPrefManager userCredentials;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
-            Intent newIntent = new Intent(MainActivity.this, MainpageDashboard.class);
+           Intent newIntent = new Intent(MainActivity.this, MainpageDashboard.class);
+           // Intent newIntent = new Intent(MainActivity.this, ActivityAddIngredients.class);
             startActivity(newIntent);
         }
 
