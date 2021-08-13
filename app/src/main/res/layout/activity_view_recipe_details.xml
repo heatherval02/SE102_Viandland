@@ -219,6 +219,42 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_weight="1"
+                    app:cardUseCompatPadding="true"
+                    app:cardBackgroundColor="#D0FFDB"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp">
+                    <TextView
+                        android:id="@+id/source"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Add to Favorite"
+                        android:padding="14dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:gravity="center_vertical"
+                        android:drawablePadding="10dp"
+                        android:drawableLeft="@drawable/ic_baseline_favorite_24"
+                        android:drawableStart="@drawable/ic_baseline_favorite_24" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
