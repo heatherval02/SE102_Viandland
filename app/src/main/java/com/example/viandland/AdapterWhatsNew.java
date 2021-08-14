@@ -1,6 +1,7 @@
 package com.example.viandland;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,6 +49,16 @@ public class AdapterWhatsNew extends RecyclerView.Adapter<AdapterWhatsNew.Adapat
                 .load(modelrecentlyAdded.getRecipe_image())
                 //.placeholder(R.drawable.loader)
                 .into(holder.recipeImage);
+        holder.recipeImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newIntent = new Intent(mCtx, ActivityViewRecipe.class);
+                newIntent.putExtra("recipe_id", String.valueOf(modelrecentlyAdded.recipe_id));
+                newIntent.putExtra("from", "recipes");
+                mCtx.startActivity(newIntent);
+            }
+        });
+
         holder.recipeTitle.setText(modelrecentlyAdded.getRecipe_name());
         holder.recipeCook.setText(modelrecentlyAdded.getCook_name());
         holder.recipeDateAdded.setText(modelrecentlyAdded.getRecipe_date_added());

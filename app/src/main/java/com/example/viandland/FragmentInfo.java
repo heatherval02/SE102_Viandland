@@ -2,6 +2,7 @@
 package com.example.viandland;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -67,6 +68,7 @@ public class FragmentInfo extends Fragment {
         return fragment;
     }
 
+    String recipe_id;
     BlurLayout blurLayout;
 
     TextView todaysRecipeName, todaysRecipeCook;
@@ -74,6 +76,8 @@ public class FragmentInfo extends Fragment {
 
     Calendar calendar = Calendar.getInstance();
     String dayToday = "";
+
+    TextView todaysText;
 
 
     @Override
@@ -121,6 +125,9 @@ public class FragmentInfo extends Fragment {
         blurLayout = view.findViewById(R.id.blurLayout);
         blurLayout.startBlur();
 
+        todaysText = view.findViewById(R.id.dayToday);
+        todaysText.setText(dayToday);
+
         todaysRecipeName = view.findViewById(R.id.recipeName);
         todaysRecipeImage = view.findViewById(R.id.recipeImage);
 
@@ -133,7 +140,7 @@ public class FragmentInfo extends Fragment {
 
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            String recipeIdText = String.valueOf(jsonObject.getString("recipe_id"));
+                            recipe_id = jsonObject.getString("recipe_id");
                             todaysRecipeName.setText(jsonObject.getString("recipe_name"));
 
                             Glide.with(getContext())
@@ -168,8 +175,17 @@ public class FragmentInfo extends Fragment {
 
         RequestHandler.getInstance(getContext()).addToRequestQueue(stringRequest);
 
+        todaysRecipeImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent newIntent = new Intent(view.getContext(), ActivityViewRecipe.class);
+                newIntent.putExtra("recipe_id", String.valueOf(recipe_id));
+                newIntent.putExtra("from", "todays_recipes");
+                startActivity(newIntent);
 
+            }
+        });
         return view;
 
     }

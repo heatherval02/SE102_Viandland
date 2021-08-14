@@ -1,6 +1,7 @@
 package com.example.viandland;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +54,20 @@ public class AdapterTrendingRecipes extends PagerAdapter {
                 .load(trendingRecipesModel.getRecipe_image())
                 //.placeholder(R.drawable.loader)
                 .into(trendingRecipeImage);
+
+        trendingRecipeImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent newIntent = new Intent(view.getContext(), ActivityViewRecipe.class);
+                newIntent.putExtra("recipe_id", String.valueOf(trendingRecipesModel.recipe_id));
+                newIntent.putExtra("from", "trending_recipes");
+                context.startActivity(newIntent);
+
+
+            }
+        });
 
         Glide.with(context)
                 .load(trendingRecipesModel.getCook_image())

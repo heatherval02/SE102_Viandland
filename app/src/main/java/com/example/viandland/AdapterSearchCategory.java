@@ -1,6 +1,7 @@
 package com.example.viandland;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,16 @@ public class AdapterSearchCategory extends RecyclerView.Adapter<AdapterSearchCat
                 .load( modelCategoryResults.getRecipe_image())
                 //.placeholder(R.drawable.loader)
                 .into(holder.recipeImage);
+        holder.recipeImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newIntent = new Intent(mCtx, ActivityViewRecipe.class);
+                newIntent.putExtra("recipe_id", String.valueOf(modelCategoryResults.recipe_id));
+                newIntent.putExtra("from", "recipes");
+                mCtx.startActivity(newIntent);
+            }
+        });
+
         holder.recipeTitle.setText( modelCategoryResults.getRecipe_name());
         holder.recipeCook.setText( modelCategoryResults.getRecipe_cook());
         holder.recipeDateAdded.setText( modelCategoryResults.getRecipe_date_added());

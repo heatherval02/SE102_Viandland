@@ -28,7 +28,15 @@ public class Constants {
 
     public static final String URL_SETCATEGORY = ROOT_URL + "setCategory.php";
 
+    public static final String URL_GETRECIPEDATAFROMRECIPES = ROOT_URL + "getRecipeDataFromRecipes.php";
+    public static final String URL_GETRECIPEDATAFROMTRENDING = ROOT_URL + "getRecipeDataFromTrending.php";
+    public static final String URL_GETRECIPEDATAFROMTODAYS = ROOT_URL + "getRecipeDataFromTodays.php";
 
+    public static final String URL_GETINSTRUCTIONFROMRECIPES = ROOT_URL + "getInstructionsFromRecipes.php";
+    public static final String URL_GETINSTRUCTIONFROMTRENDING = ROOT_URL + "getInstructionsFromTrending.php";
+    public static final String URL_GETINSTRUCTIONFROMTODAYS = ROOT_URL + "getInstructionsFromTodays.php";
 
-
+    public static final String URL_GETINGREDIENTSFROMRECIPES = ROOT_URL + "getIngredientsFromRecipes.php";
+    public static final String URL_GETINGREDIENTSFROMTRENDING = ROOT_URL + "getIngredientsFromTrending.php";
+    public static final String URL_GETINGREDIENTSFROMTODAYS = ROOT_URL + "getIngredientsFromTodays.php";
 }
