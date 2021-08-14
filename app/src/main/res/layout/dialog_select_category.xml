@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:padding="15dp"
+            android:textAlignment="center"/>
+
+        <EditText
+            android:id="@+id/categoryText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Please select category"
+            android:textAlignment="center"
+            android:padding="15dp"/>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <Button
+                    android:id="@+id/breakfastCategory"
+                    android:text="Breakfast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginRight="5dp"/>
+
+                <Button
+                    android:id="@+id/lunchCategory"
+                    android:text="Lunch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_marginRight="5dp"/>
+                <Button
+                    android:id="@+id/dinnerCategory"
+                    android:text="Dinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3" />
+
+            </TableRow>
+            <TableRow
+                android:gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+                <Button
+                    android:id="@+id/healthyMealsCategory"
+                    android:text="Healthy Meals"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginRight="5dp"/>
+
+                <Button
+                    android:id="@+id/snacksCategory"
+                    android:text="Snacks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_marginRight="5dp"/>
+
+                <Button
+                    android:id="@+id/otherCategory"
+                    android:text="Other"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3" />
+
+            </TableRow>
+
+
+
+
+
+        </TableLayout>
+        <Button
+            android:id="@+id/publishButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Category"/>
+
+        <Button
+            android:id="@+id/closeBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Close"/>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

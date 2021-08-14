@@ -55,14 +55,22 @@
                 android:text="Your Steps"
                 android:padding="15dp"/>
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/ingredientsRecyclerView"
+                android:id="@+id/instructionRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <Button
+                android:id="@+id/openStepsDialogButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Add Steps"/>
+
+            <Button
+                android:id="@+id/saveAllBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save Instructions"/>
+
 
 
         </LinearLayout>

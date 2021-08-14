@@ -65,6 +65,12 @@
                 android:layout_height="wrap_content"
                 android:text="Add Ingredients"/>
 
+            <Button
+                android:id="@+id/saveAllBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save Ingredients"/>
+
 
         </LinearLayout>
 

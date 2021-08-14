@@ -22,6 +22,12 @@ public class Constants {
     public static final String URL_SETINGREDIENTS = ROOT_URL + "setIngredients.php";
     public static final String URL_REMOVEINGREDIENTS = ROOT_URL + "removeIngredients.php";
 
+    public static final String URL_GETRECIPEINSTRUCTIONS = ROOT_URL + "getRecipeInstructions.php";
+    public static final String URL_SETINSTRUCTIONS = ROOT_URL + "setInstructions.php";
+    public static final String URL_REMOVEINSTRUCTION = ROOT_URL + "removeInstruction.php";
+
+    public static final String URL_SETCATEGORY = ROOT_URL + "setCategory.php";
+
 
 
 

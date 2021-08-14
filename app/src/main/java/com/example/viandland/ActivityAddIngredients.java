@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.LayoutInflater;
@@ -35,6 +36,7 @@ public class ActivityAddIngredients extends AppCompatActivity{
     Button openDialogForIngredients;
     ImageView backBtn;
     String recipeId;
+    Button saveAll;
 
     RecyclerView ingredientsRecyclerView;
     AdapterIngredientsList ingredientsListAdapter;
@@ -44,11 +46,26 @@ public class ActivityAddIngredients extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_ingredients);
+
         //Add adapter Here
         ingredientsRecyclerView = findViewById(R.id.ingredientsRecyclerView);
         ingredientsRecyclerView.setHasFixedSize(true);
         ingredientsRecyclerView.setLayoutManager(new LinearLayoutManager(ActivityAddIngredients.this));
 
+
+
+        saveAll = findViewById(R.id.saveAllBtn);
+        saveAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent newIntent = new Intent(ActivityAddIngredients.this, ActivityAddSteps.class);
+                newIntent.putExtra("recipe_id",recipeId.trim());
+                startActivity(newIntent);
+                finish();
+
+            }
+        });
         backBtn = findViewById(R.id.backBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -28,7 +28,6 @@
                     android:id="@+id/seachRecipeButton"
                     android:layout_width="?actionBarSize"
                     android:layout_height="?actionBarSize"
-                    android:src="@drawable/ic_baseline_arrow_forward_24"
                     android:padding="15dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
@@ -64,7 +63,6 @@
                     android:layout_below="@+id/trendingRecipesViewPager"
                     android:layout_width="?actionBarSize"
                     android:layout_height="?actionBarSize"
-                    android:src="@drawable/ic_baseline_arrow_forward_24"
                     android:padding="15dp"
                     android:layout_alignParentRight="true"
                     />
