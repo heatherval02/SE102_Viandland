@@ -11,7 +11,8 @@
             android:layout_height="wrap_content"
             android:text="Add Ingredients"
             android:padding="15dp"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            />
 
         <EditText
             android:id="@+id/ingredientsText"

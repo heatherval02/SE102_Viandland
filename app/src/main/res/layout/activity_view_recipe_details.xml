@@ -20,6 +20,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:title="Pork Adobo"
             app:contentScrim="@color/purple_700"
+            android:theme="@style/CustomToolbarTheme"
             >
 
             <ImageView
