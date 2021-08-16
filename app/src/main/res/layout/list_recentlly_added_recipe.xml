@@ -26,7 +26,7 @@
 
             <TextView
                 android:id="@+id/recipeTitle"
-                android:textColor="#0C3B2E"
+                android:textColor="@color/purple_700"
                 android:layout_toRightOf="@+id/recipeImage"
                 android:text="Recipe Name"
                 android:layout_marginTop="16dp"
@@ -37,7 +37,7 @@
 
             <TextView
                 android:id="@+id/recipeCook"
-                android:textColor="#d3d3d3"
+                android:textColor="@color/black"
                 android:text="Recipe Cook:"
                 android:layout_toRightOf="@+id/recipeImage"
                 android:layout_below="@id/recipeTitle"
@@ -51,7 +51,7 @@
 
             <TextView
                 android:id="@+id/recipeDateAdded"
-                android:textColor="#d3d3d3"
+                android:textColor="@color/black"
                 android:text="Date Added"
                 android:layout_toRightOf="@+id/recipeImage"
                 android:layout_below="@id/recipeCook"

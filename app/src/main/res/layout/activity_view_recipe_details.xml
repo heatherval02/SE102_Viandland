@@ -19,7 +19,8 @@
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:title="Pork Adobo"
-            app:theme="@style/CustomToolbarTheme">
+            app:contentScrim="@color/purple_700"
+            >
 
             <ImageView
                 android:id="@+id/recipe_image"
@@ -36,6 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
+                app:titleTextColor="@color/white"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -80,6 +82,7 @@
                         <TextView
                             android:id="@+id/recipeCategory"
                             android:text="Lunch"
+                            android:textColor="@color/black"
                             android:paddingLeft="14dp"
                             android:paddingRight="14dp"
                             android:paddingTop="5dp"
@@ -114,6 +117,7 @@
                         <TextView
                             android:id="@+id/recipe_cook"
                             android:text="Venjo Merano"
+                            android:textColor="@color/black"
                             android:paddingLeft="14dp"
                             android:paddingRight="14dp"
                             android:paddingTop="5dp"
@@ -127,6 +131,15 @@
 
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp">
+
 
             <androidx.cardview.widget.CardView
                 app:cardUseCompatPadding="true"
@@ -151,6 +164,7 @@
                     <TextView
                         android:id="@+id/recipe_preparation"
                         android:text="1 hour 10 minutes"
+                        android:textColor="@color/black"
                         android:paddingLeft="14dp"
                         android:paddingRight="14dp"
                         android:paddingTop="5dp"
@@ -160,6 +174,7 @@
                         android:layout_height="wrap_content" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -193,6 +208,7 @@
                     <TextView
                         android:id="@+id/recipeDescription"
                         android:text="Pork Adobo is a Filipino food.."
+                        android:textColor="@color/black"
                         android:paddingLeft="14dp"
                         android:paddingRight="14dp"
                         android:paddingTop="5dp"
@@ -238,6 +254,7 @@
                 <TextView
                     android:id="@+id/recipeInstructions"
                     android:text="No Instruction Added by the Author"
+                    android:textColor="@color/black"
                     android:paddingLeft="14dp"
                     android:paddingRight="14dp"
                     android:paddingTop="15dp"
@@ -282,6 +299,7 @@
                                 android:paddingLeft="14dp"
                                 android:paddingRight="14dp"
                                 android:textSize="16sp"
+                                android:textColor="@color/black"
                                 android:text="1/4 Chicken"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content" />

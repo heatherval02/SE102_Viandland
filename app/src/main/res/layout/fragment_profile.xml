@@ -126,12 +126,14 @@
         </RelativeLayout>
 
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_below="@+id/recyclerViewContainer"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="10dp">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center_horizontal">
 
             <Button
                 android:id="@+id/logoutBtn"
@@ -143,7 +145,8 @@
                 android:background="@drawable/button_round"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="15dp"/>
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center_horizontal"/>
 
             <Button
                 android:id="@+id/uploadBtn"
@@ -152,13 +155,20 @@
                 android:textColor="@color/white"
                 android:drawableLeft="@drawable/ic_baseline_file_upload_24"
                 android:text="Upload"
+                android:layout_marginStart="115dp"
                 android:background="@drawable/button_round"
                 android:layout_marginTop="5dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginRight="15dp"
+                android:layout_gravity="center_horizontal"/>
 
-        </RelativeLayout>
+
+
+        </LinearLayout>
     </RelativeLayout>
 
 </androidx.core.widget.NestedScrollView>
+
+
+
 

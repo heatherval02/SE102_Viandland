@@ -18,8 +18,9 @@
 
             <TextView
                 android:id="@+id/instructionText"
-                android:textColor="#262626"
+                android:textColor="@color/black"
                 android:text="Instructions"
+                android:textStyle="bold"
                 android:layout_toLeftOf="@+id/deleteBtn"
                 style="@style/TextAppearance.AppCompat.Medium"
                 android:layout_marginTop="10dp"

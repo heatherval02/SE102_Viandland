@@ -94,7 +94,8 @@
                                     android:layout_marginLeft="5dp"
                                     android:layout_width="100dp"
                                     android:layout_height="match_parent"
-                                    app:cardCornerRadius="25dp">
+                                    app:cardCornerRadius="25dp"
+                                    >
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
@@ -285,6 +286,8 @@
                     android:layout_height="wrap_content"
                     android:padding="15dp"
                     android:text="Results"
+                    android:textColor="@color/purple_700"
+                    android:textStyle="bold"
                     style="@style/TextAppearance.AppCompat.Medium"/>
 
                 <Button

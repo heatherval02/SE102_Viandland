@@ -18,7 +18,8 @@
 
             <TextView
                 android:id="@+id/ingredientsText"
-                android:textColor="#262626"
+                android:textColor="@color/black"
+                android:textStyle="bold"
                 android:text="Ingredients"
                 android:layout_toLeftOf="@+id/deleteBtn"
                 style="@style/TextAppearance.AppCompat.Medium"
