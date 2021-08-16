@@ -121,8 +121,6 @@ public class ActivityAddSteps extends AppCompatActivity implements AdapterInstru
                 publishRecipe.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        progressDialog.setMessage("Please wait");
-                        progressDialog.show();
                         StringRequest stringRequest = new StringRequest(
                                 Request.Method.POST,
                                 Constants.URL_SETCATEGORY,
@@ -132,17 +130,15 @@ public class ActivityAddSteps extends AppCompatActivity implements AdapterInstru
                                         try {
                                             JSONObject obj = new JSONObject(response);
                                             if (obj.getString("message").equalsIgnoreCase("Success")){
-                                                progressDialog.dismiss();
                                                 alertDialog.dismiss();
-                                                closeCurrentActivity();
+                                                successDialog();
                                             } else {
                                                 Toast.makeText(ActivityAddSteps.this, "Error Occured Please contact support", Toast.LENGTH_SHORT).show();
-                                                progressDialog.dismiss();
                                             }
 
                                         } catch (JSONException e) {
                                             Toast.makeText(ActivityAddSteps.this, "Error on JSON : "+ e, Toast.LENGTH_SHORT).show();
-                                            progressDialog.dismiss();
+
                                         }
 
                                     }
@@ -232,9 +228,34 @@ public class ActivityAddSteps extends AppCompatActivity implements AdapterInstru
 
     }
 
-    private void closeCurrentActivity() {
-        Toast.makeText(this, "Recipe uploaded successfully", Toast.LENGTH_SHORT).show();
-        this.finish();
+    private void successDialog() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(ActivityAddSteps.this);
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(ActivityAddSteps.this).inflate(R.layout.dialog_congratulation, viewGroup, false);
+
+        Button okDialogButton = dialogView.findViewById(R.id.okButton);
+        Button cancelDialogButton = dialogView.findViewById(R.id.cancelButton);
+
+        builder.setView(dialogView);
+        AlertDialog alertDialog = builder.create();
+
+        okDialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newIntent = new Intent(ActivityAddSteps.this, MainpageDashboard.class);
+                startActivity(newIntent);
+                finish();
+            }
+        });
+        cancelDialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        alertDialog.show();
+
     }
 
     private void confirmAddInstruction(String recipe_id, String instruction_text) {

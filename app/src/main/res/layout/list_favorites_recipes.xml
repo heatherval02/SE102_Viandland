@@ -62,6 +62,18 @@
                 android:layout_marginLeft="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
+            <ImageButton
+                android:id="@+id/removeFavoritesButton"
+
+                android:layout_below="@id/recipeDateAdded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/ic_baseline_delete_outline_24"
+                android:padding="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_alignParentRight="true"/>
         </RelativeLayout>
 
 

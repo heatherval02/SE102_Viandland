@@ -39,4 +39,12 @@ public class Constants {
     public static final String URL_GETINGREDIENTSFROMRECIPES = ROOT_URL + "getIngredientsFromRecipes.php";
     public static final String URL_GETINGREDIENTSFROMTRENDING = ROOT_URL + "getIngredientsFromTrending.php";
     public static final String URL_GETINGREDIENTSFROMTODAYS = ROOT_URL + "getIngredientsFromTodays.php";
+
+    public static final String URL_ADDTOFAVORITES = ROOT_URL + "addToFavorites.php";
+
+    public static final String URL_GETFAVORITESDATAFROMRECIPES = ROOT_URL + "getFavoritesDataFromRecipes.php";
+    public static final String URL_GETFAVORITESDATAFROMTODAYS = ROOT_URL + "getFavoritesDataFromTodaysRecipe.php";
+    public static final String URL_GETFAVORITESDATAFROMTRENDING = ROOT_URL + "getFavoritesDataFromTrendingRecipes.php";
+
+    public static final String URL_REMOVEFAVORITES = ROOT_URL + "removeFavorites.php";
 }

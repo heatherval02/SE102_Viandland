@@ -63,7 +63,6 @@ public class ActivityAddIngredients extends AppCompatActivity{
                 newIntent.putExtra("recipe_id",recipeId.trim());
                 startActivity(newIntent);
                 finish();
-
             }
         });
         backBtn = findViewById(R.id.backBtn);

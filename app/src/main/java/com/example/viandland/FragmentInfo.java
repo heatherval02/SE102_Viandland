@@ -2,6 +2,7 @@
 package com.example.viandland;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -71,13 +72,15 @@ public class FragmentInfo extends Fragment {
     String recipe_id;
     BlurLayout blurLayout;
 
-    TextView todaysRecipeName, todaysRecipeCook;
+    TextView todaysRecipeName, todaysRecipeCook, todaysDescriptionText;
     ImageView todaysRecipeImage;
 
     Calendar calendar = Calendar.getInstance();
     String dayToday = "";
 
     TextView todaysText;
+
+    ProgressDialog progressDialog;
 
 
     @Override
@@ -92,6 +95,10 @@ public class FragmentInfo extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Please wait while retrieving recipes");
+        progressDialog.show();
 
         int day = calendar.get(Calendar.DAY_OF_WEEK);
 
@@ -125,11 +132,12 @@ public class FragmentInfo extends Fragment {
         blurLayout = view.findViewById(R.id.blurLayout);
         blurLayout.startBlur();
 
-        todaysText = view.findViewById(R.id.dayToday);
-        todaysText.setText(dayToday);
+
 
         todaysRecipeName = view.findViewById(R.id.recipeName);
         todaysRecipeImage = view.findViewById(R.id.recipeImage);
+
+        todaysDescriptionText = view.findViewById(R.id.recipeDescriptionText);
 
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
@@ -138,10 +146,13 @@ public class FragmentInfo extends Fragment {
                     @Override
                     public void onResponse(String response) {
 
+                        progressDialog.dismiss();
+
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             recipe_id = jsonObject.getString("recipe_id");
-                            todaysRecipeName.setText(jsonObject.getString("recipe_name"));
+                            todaysRecipeName.setText(dayToday+"\n"+jsonObject.getString("recipe_name"));
+                            todaysDescriptionText.setText(jsonObject.getString("recipe_description"));
 
                             Glide.with(getContext())
                                     .load(jsonObject.getString("recipe_img"))
@@ -149,7 +160,7 @@ public class FragmentInfo extends Fragment {
                                     .into(todaysRecipeImage);
 
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            progressDialog.dismiss();
                             Toast.makeText(getContext(), "Error in Json" + e, Toast.LENGTH_LONG).show();
                         }
 
@@ -158,6 +169,7 @@ public class FragmentInfo extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
                         Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
@@ -181,7 +193,7 @@ public class FragmentInfo extends Fragment {
 
                 Intent newIntent = new Intent(view.getContext(), ActivityViewRecipe.class);
                 newIntent.putExtra("recipe_id", String.valueOf(recipe_id));
-                newIntent.putExtra("from", "todays_recipes");
+                newIntent.putExtra("from", "todays_recipe");
                 startActivity(newIntent);
 
             }

@@ -15,5 +15,12 @@
 
         <item name="android:windowContentTransitions">true</item>
     </style>
+    <style name="CustomToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <!-- HERE ARE THE CHANGES - Change color of different texts -->
+        <item name="android:textColorPrimary">@color/purple_700</item>
+        <item name="colorControlNormal">@color/purple_200</item>
+    </style>
+
 
 </resources>

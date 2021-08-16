@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -37,6 +39,7 @@ public class ActivityViewRecipe extends AppCompatActivity {
     TextView recipeIngredientsText;
 
     ProgressDialog progressDialog;
+    Button addToFavoritesButton;
 
 
     @Override
@@ -61,13 +64,68 @@ public class ActivityViewRecipe extends AppCompatActivity {
         if (from.equalsIgnoreCase("trending_recipes")){
             getAllRecipeDataFromTrendingRecipes(recipe_id);
         }
-        if (from.equalsIgnoreCase("todays_recipes")) {
+        if (from.equalsIgnoreCase("todays_recipe")) {
             getAllRecipeDataFromTodaysRecipes(recipe_id);
 
         }
 
+        addToFavoritesButton = findViewById(R.id.addToFavoritesButton);
+        addToFavoritesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AddToUsersFavorite(SharedPrefManager.getUid(), from, recipe_id);
 
 
+            }
+        });
+
+
+
+    }
+
+    private void AddToUsersFavorite(int uid, String from, String recipe_id) {
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_ADDTOFAVORITES,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject messageObj= new JSONObject(response);
+                            if (messageObj.getString("message").equalsIgnoreCase("Recipe is already listed as your favorite")){
+                                Toast.makeText(ActivityViewRecipe.this, "This recipe is currently listed as your favorite", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(ActivityViewRecipe.this, "Recipe succecssfully added to your favorites", Toast.LENGTH_SHORT).show();
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(ActivityViewRecipe.this, "Error :" + error, Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("uid", String.valueOf(uid));
+                params.put("recipe_id", recipe_id);
+                params.put("table_name", from);
+                return params;
+            }
+        };
+
+        RequestHandler.getInstance(ActivityViewRecipe.this).addToRequestQueue(stringRequest);
     }
 
     private void getAllRecipeDataFromTodaysRecipes(String recipe_id) {

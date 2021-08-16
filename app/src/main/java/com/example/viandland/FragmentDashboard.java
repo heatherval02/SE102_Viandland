@@ -93,6 +93,8 @@ public class FragmentDashboard extends Fragment {
     AdapterWhatsNew whatsNewAdapter;
     List<ModelWhatsNew> modelWhatsNewList;
 
+    ProgressDialog progressDialog;
+
 
 
     @Override
@@ -101,7 +103,9 @@ public class FragmentDashboard extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
-
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Please wait while retrieving recipes");
+        progressDialog.show();
 
         trendingRecipesViewPager = view.findViewById(R.id.trendingRecipesViewPager);
         loadTrendingRecipesCards();
@@ -145,6 +149,9 @@ public class FragmentDashboard extends Fragment {
                     @Override
                     public void onResponse(String response) {
                         try {
+
+                            progressDialog.dismiss();
+
                             JSONArray recipes = new JSONArray(response);
 
                             for (int i = 0; i <  recipes.length(); i++){
@@ -167,6 +174,7 @@ public class FragmentDashboard extends Fragment {
 
 
                         } catch (JSONException e) {
+                            progressDialog.dismiss();
                             e.printStackTrace();
                         }
 
@@ -175,7 +183,7 @@ public class FragmentDashboard extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        progressDialog.dismiss();
                         Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
 
                     }
