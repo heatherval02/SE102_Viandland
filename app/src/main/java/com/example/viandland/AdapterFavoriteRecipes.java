@@ -13,18 +13,30 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AdapterFavoriteRecipes extends RecyclerView.Adapter<AdapterFavoriteRecipes.AdapterFavoriteRecipesViewHolder>{
 
     Context mCtx;
     List<ModelFavoriteRecipes> modelFavoriteRecipesList;
+    IUserRecycler mListener;
 
-    public AdapterFavoriteRecipes(Context mCtx, List<ModelFavoriteRecipes> modelFavoriteRecipesList) {
+    public AdapterFavoriteRecipes(Context mCtx, List<ModelFavoriteRecipes> modelFavoriteRecipesList, IUserRecycler mListener) {
         this.mCtx = mCtx;
         this.modelFavoriteRecipesList = modelFavoriteRecipesList;
+        this.mListener = mListener;
     }
 
     @NonNull
@@ -32,7 +44,7 @@ public class AdapterFavoriteRecipes extends RecyclerView.Adapter<AdapterFavorite
     public AdapterFavoriteRecipesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.list_favorites_recipes, null);
-        return new AdapterFavoriteRecipes.AdapterFavoriteRecipesViewHolder(view);
+        return new AdapterFavoriteRecipes.AdapterFavoriteRecipesViewHolder(view, mListener);
     }
 
     @Override
@@ -56,12 +68,49 @@ public class AdapterFavoriteRecipes extends RecyclerView.Adapter<AdapterFavorite
         holder.removeFavoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                StringRequest stringRequest = new StringRequest(
+                        Request.Method.POST,
+                        Constants.URL_REMOVEFAVORITES,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+                                    JSONObject obj = new JSONObject(response);
+                                    if (obj.getString("message").equalsIgnoreCase("Success")){
+                                        Toast.makeText(mCtx, "Recipe deleted successfully", Toast.LENGTH_SHORT).show();
+                                        mListener.refreshFavoritesList();
+
+                                    } else {
+                                        Toast.makeText(mCtx, "Error Occured Please contact support", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                } catch (JSONException e) {
+                                    Toast.makeText(mCtx, "Error on JSON HERE: "+ e, Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(mCtx, "Error :" + error, Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                ) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("uid", String.valueOf(SharedPrefManager.getUid()));
+                        params.put("favorites_id", modelFavoriteRecipes.favorites_id);
+                        return params;
+                    }
+                };
+
+                RequestHandler.getInstance(mCtx).addToRequestQueue(stringRequest);
 
 
 
-
-
-                Toast.makeText(mCtx, "Delete CLick on favorite id : " + String.valueOf(modelFavoriteRecipes.favorites_id), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -81,11 +130,11 @@ public class AdapterFavoriteRecipes extends RecyclerView.Adapter<AdapterFavorite
         ImageView recipeImage;
         TextView recipeTitle,recipeCook, recipeDateAdded;
         ImageButton removeFavoriteButton;
+        IUserRecycler mListener;
 
-
-        public AdapterFavoriteRecipesViewHolder(@NonNull View itemView) {
+        public AdapterFavoriteRecipesViewHolder(@NonNull View itemView, IUserRecycler mListener) {
             super(itemView);
-
+            this.mListener = mListener;
             recipeImage = itemView.findViewById(R.id.recipeImage);
             recipeTitle = itemView.findViewById(R.id.recipeTitle);
             recipeCook = itemView.findViewById(R.id.recipeCook);
@@ -93,5 +142,10 @@ public class AdapterFavoriteRecipes extends RecyclerView.Adapter<AdapterFavorite
             removeFavoriteButton = itemView.findViewById(R.id.removeFavoritesButton);
 
         }
+    }
+
+
+    interface IUserRecycler{
+        void refreshFavoritesList();
     }
 }

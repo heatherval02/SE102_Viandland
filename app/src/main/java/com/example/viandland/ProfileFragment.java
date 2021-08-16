@@ -9,7 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,6 +63,7 @@ public class ProfileFragment extends Fragment {
 
     Button logoutBtn;
     Button uploadBtn;
+    TextView userFullname;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -81,6 +85,8 @@ public class ProfileFragment extends Fragment {
 
             }
         });
+        userFullname = view.findViewById(R.id.userFullName);
+        userFullname.setText(SharedPrefManager.getFullname());
 
         uploadBtn = view.findViewById(R.id.uploadBtn);
         uploadBtn.setOnClickListener(new View.OnClickListener() {

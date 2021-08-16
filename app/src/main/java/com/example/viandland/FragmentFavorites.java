@@ -33,7 +33,7 @@ import java.util.Map;
  * Use the {@link FragmentFavorites#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentFavorites extends Fragment {
+public class FragmentFavorites extends Fragment implements AdapterFavoriteRecipes.IUserRecycler{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -137,7 +137,7 @@ public class FragmentFavorites extends Fragment {
 
                             }
 
-                            favoriteRecipesAdapter = new AdapterFavoriteRecipes(getContext(), modelFavoriteRecipesList);
+                            favoriteRecipesAdapter = new AdapterFavoriteRecipes(getContext(), modelFavoriteRecipesList, FragmentFavorites.this::refreshFavoritesList);
                             favoritesRecyclerView.setAdapter(favoriteRecipesAdapter);
 
 
@@ -203,7 +203,7 @@ public class FragmentFavorites extends Fragment {
 
                             }
 
-                            favoriteRecipesAdapter = new AdapterFavoriteRecipes(getContext(), modelFavoriteRecipesList);
+                            favoriteRecipesAdapter = new AdapterFavoriteRecipes(getContext(), modelFavoriteRecipesList, FragmentFavorites.this::refreshFavoritesList);
                             favoritesRecyclerView.setAdapter(favoriteRecipesAdapter);
 
 
@@ -275,7 +275,7 @@ public class FragmentFavorites extends Fragment {
 
                             }
 
-                            favoriteRecipesAdapter = new AdapterFavoriteRecipes(getContext(), modelFavoriteRecipesList);
+                            favoriteRecipesAdapter = new AdapterFavoriteRecipes(getContext(), modelFavoriteRecipesList, FragmentFavorites.this::refreshFavoritesList);
                             favoritesRecyclerView.setAdapter(favoriteRecipesAdapter);
 
 
@@ -306,5 +306,13 @@ public class FragmentFavorites extends Fragment {
 
         RequestHandler.getInstance(getContext()).addToRequestQueue(stringRequest);
 
+    }
+
+    @Override
+    public void refreshFavoritesList() {
+        modelFavoriteRecipesList.clear();
+        DisplayFavoritesFromRecipes(SharedPrefManager.getUid());
+        DisplayFavoritesFromTrending(SharedPrefManager.getUid());
+        DisplayFavoritesFromTodaysRecipe(SharedPrefManager.getUid());
     }
 }
