@@ -10,20 +10,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Add Ingredients"
+            android:textSize="20sp"
+            android:textColor="@color/purple_700"
+            android:textStyle="bold"
             android:padding="15dp"
             android:textAlignment="center"/>
 
         <EditText
             android:id="@+id/ingredientsText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Ex. 1 Egg"/>
+            android:padding="10dp"
+            android:layout_height="55sp"
+            android:textSize="18sp"
+            android:hint="Ex. 1 Egg"
+            android:textColor="@color/black"
+            android:background="@drawable/custom_edittext"
+            android:textColorHint="@color/black"/>
 
         <Button
             android:id="@+id/addIngredientsBtn"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
+            android:layout_marginTop="15dp"
             android:layout_height="wrap_content"
-            android:text="Add Ingredients"/>
+            android:text="Add Ingredients"
+            android:background="@drawable/button_round"
+            android:layout_gravity="center"
+           />
 
 
 

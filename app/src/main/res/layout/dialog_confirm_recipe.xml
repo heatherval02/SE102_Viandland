@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:text="This recipe will be shown to all users inside VIANLAND. Please Confirm to Continue"
         android:textAlignment="center"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,13 +35,19 @@
 
     <Button
         android:id="@+id/confirmButton"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Confirm" />
+        android:text="Confirm"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_round"
+        android:layout_gravity="center"/>
 
     <Button
         android:id="@+id/cancelButton"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="cancel" />
+        android:text="cancel"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:background="@drawable/button_round"/>
 </LinearLayout>

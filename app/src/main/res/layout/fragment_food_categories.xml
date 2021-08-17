@@ -90,7 +90,7 @@
 
                                 <androidx.cardview.widget.CardView
                                     android:id="@+id/breakfastBtn"
-                                    app:cardBackgroundColor="#A5FFD6"
+                                    app:cardBackgroundColor="#D0FFDB"
                                     android:layout_marginLeft="5dp"
                                     android:layout_width="100dp"
                                     android:layout_height="match_parent"
@@ -122,7 +122,7 @@
 
                                 <androidx.cardview.widget.CardView
                                     android:id="@+id/lunchBtn"
-                                    app:cardBackgroundColor="#A5FFD6"
+                                    app:cardBackgroundColor="#D0FFDB"
                                     android:layout_width="100dp"
                                     android:layout_height="match_parent"
                                     app:cardCornerRadius="25dp"
@@ -151,7 +151,7 @@
 
                                 <androidx.cardview.widget.CardView
                                     android:id="@+id/dinnerBtn"
-                                    app:cardBackgroundColor="#A5FFD6"
+                                    app:cardBackgroundColor="#D0FFDB"
                                     android:layout_width="100dp"
                                     android:layout_height="match_parent"
                                     app:cardCornerRadius="25dp"
@@ -180,7 +180,7 @@
 
                                 <androidx.cardview.widget.CardView
                                     android:id="@+id/healthyMealsBtn"
-                                    app:cardBackgroundColor="#A5FFD6"
+                                    app:cardBackgroundColor="#D0FFDB"
                                     android:layout_width="100dp"
                                     android:layout_height="match_parent"
                                     app:cardCornerRadius="25dp"
@@ -209,7 +209,7 @@
 
                                 <androidx.cardview.widget.CardView
                                     android:id="@+id/snacksBtn"
-                                    app:cardBackgroundColor="#A5FFD6"
+                                    app:cardBackgroundColor="#D0FFDB"
                                     android:layout_width="100dp"
                                     android:layout_height="match_parent"
                                     app:cardCornerRadius="25dp"
@@ -239,7 +239,7 @@
 
                                 <androidx.cardview.widget.CardView
                                     android:id="@+id/kidsMealBtn"
-                                    app:cardBackgroundColor="#A5FFD6"
+                                    app:cardBackgroundColor="#D0FFDB"
                                     android:layout_width="100dp"
                                     android:layout_height="match_parent"
                                     app:cardCornerRadius="25dp"

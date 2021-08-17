@@ -55,53 +55,81 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Recipe Details"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="18sp"
                 android:padding="15dp"/>
 
             <EditText
                 android:id="@+id/recipeNameText"
                 android:hint="Recipe name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="55sp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/custom_edittext"/>
 
 
             <EditText
                 android:id="@+id/recipeDurationText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Recipe Preparation"/>
+                android:layout_height="55sp"
+                android:hint="Recipe Preparation"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/custom_edittext"/>
 
 
             <EditText
                 android:id="@+id/recipeDescriptionText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55sp"
                 android:maxLines="3"
-                android:hint="Description"/>
+                android:hint="Description"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/custom_edittext"/>
 
             <Button
                 android:id="@+id/selectImageBtn"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:text="Select Photo"/>
+                android:text="Select Photo"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_round"
+                android:layout_gravity="center"/>
 
             <ImageView
                 android:id="@+id/recipeImage"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:background="@drawable/no_image_to_show_"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop"
+                android:layout_marginTop="10dp"/>
 
             <Button
                 android:id="@+id/previewBtn"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:text="Preview"/>
+                android:text="Preview"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_round"
+                android:layout_gravity="center"/>
 
         <Button
             android:id="@+id/saveBtn"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="Save Recipe"/>
+            android:text="Save Recipe"
+            android:background="@drawable/button_round"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"/>
 
 
 

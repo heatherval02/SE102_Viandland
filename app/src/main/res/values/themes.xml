@@ -21,6 +21,6 @@
         <item name="android:textColorPrimary">@color/purple_700</item>
         <item name="colorControlNormal">@color/purple_200</item>
     </style>
-    
+
 
 </resources>

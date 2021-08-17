@@ -4,20 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/bg_main_login"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <ImageView
-
-            android:layout_width="500dp"
-            android:layout_height="400dp"
-            android:src="@drawable/bg_wave" />
-
-    </LinearLayout>
 
     <TextView
         android:id="@+id/loginText"
@@ -27,7 +17,7 @@
         android:textSize="40sp"
         android:textStyle="bold"
         android:textColor="@color/purple_700"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="200dp"
         android:layout_marginStart="15dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
@@ -42,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Let's get started"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textColor="@color/purple_700"
         android:layout_marginStart="15dp"
         android:paddingTop="10dp"
@@ -68,11 +58,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Username or email"
-            android:textColorHint="@color/purple_700"
-            android:textColor="@color/purple_700"
+            android:textColor="@color/black"
+            android:padding="10dp"
+            android:textColorHint="@color/black"
             android:paddingStart="10dp"
             android:background="@drawable/login_edittext_bg"
-            android:textCursorDrawable="@drawable/login_corner"/>
+            android:textCursorDrawable="@drawable/login_corner"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:drawablePadding="10dp"
+            android:drawableStart="10dp"/>
 
     </soup.neumorphism.NeumorphCardView>
 
@@ -91,29 +85,35 @@
             android:id="@+id/passwordInputText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textColor="@color/purple_700"
-            android:textColorHint="@color/purple_700"
+            android:textColor="@color/black"
+            android:padding="10dp"
+            android:textColorHint="@color/black"
             android:hint="Password"
             android:inputType="textPassword"
             android:paddingStart="10dp"
             android:background="@drawable/login_edittext_bg"
-            android:textCursorDrawable="@drawable/login_corner"/>
+            android:textCursorDrawable="@drawable/login_corner"
+            android:drawableLeft="@drawable/ic_baseline_lock_24"
+            android:drawablePadding="10dp"
+            android:drawableStart="10dp"
+            />
 
     </soup.neumorphism.NeumorphCardView>
 
 
-    <soup.neumorphism.NeumorphButton
-        style="@style/Widget.Neumorph.Button"
+    <Button
         android:layout_below="@id/password2"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:textColor="@color/purple_700"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         android:layout_marginStart="100dp"
         android:layout_marginTop="10dp"
         android:id="@+id/loginBtn"
+        android:background="@drawable/button_round"
+
         />
 
     <TextView
@@ -124,18 +124,16 @@
         android:text="Click here to sign up"
         android:textColor="@color/purple_700"
         android:textAlignment="center"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/signUpLink">
 
-        <ImageView
 
-            android:layout_width="495dp"
-            android:layout_height="224dp"
-            android:src="@drawable/foot_wave" />
 
     </LinearLayout>
 

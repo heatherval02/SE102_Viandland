@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    android:background="@drawable/bg_wave"
+    android:background="@drawable/bg_sign_info"
     tools:context=".MainActivity">
 
 
@@ -14,12 +14,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign Up"
-        android:textSize="25dp"
+        android:textSize="30dp"
         android:textStyle="bold"
         android:textColor="@color/purple_700"
         android:layout_marginTop="5dp"
         android:layout_marginStart="15dp"
         android:paddingBottom="10dp"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -27,9 +28,10 @@
 
     <TextView
         android:id="@+id/additionalInforLabel"
+        android:layout_marginStart="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:textColor="@color/purple_700"
         android:text="Additional Information"
         android:layout_below="@+id/signUpText"
@@ -54,8 +56,8 @@
             android:inputType="textPersonName"
             android:paddingStart="10dp"
             android:layout_marginTop="0dp"
-            android:textColorHint="@color/purple_700"
-            android:textColor="@color/purple_700"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:padding="10dp"
             android:background="@drawable/login_edittext_bg"
             android:textCursorDrawable="@drawable/login_corner"/>
@@ -79,8 +81,8 @@
             android:hint="Lastname"
             android:inputType="textPersonName"
             android:paddingStart="10dp"
-            android:textColor="@color/purple_700"
-            android:textColorHint="@color/purple_700"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:padding="10dp"
             android:background="@drawable/login_edittext_bg"
             android:textCursorDrawable="@drawable/login_corner"/>
@@ -105,8 +107,8 @@
             android:inputType="phone"
             android:paddingStart="10dp"
             android:layout_marginTop="0dp"
-            android:textColor="@color/purple_700"
-            android:textColorHint="@color/purple_700"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:padding="10dp"
             android:background="@drawable/login_edittext_bg"
             android:textCursorDrawable="@drawable/login_corner"/>
@@ -131,8 +133,8 @@
             android:inputType="textEmailAddress"
             android:paddingStart="10dp"
             android:layout_marginTop="0dp"
-            android:textColor="@color/purple_700"
-            android:textColorHint="@color/purple_700"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:padding="10dp"
             android:background="@drawable/login_edittext_bg"
             android:textCursorDrawable="@drawable/login_corner"/>
@@ -157,8 +159,8 @@
             android:inputType="textPassword"
             android:paddingStart="10dp"
             android:layout_marginTop="0dp"
-            android:textColor="@color/purple_700"
-            android:textColorHint="@color/purple_700"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:padding="10dp"
             android:background="@drawable/login_edittext_bg"
             android:textCursorDrawable="@drawable/login_corner"/>
@@ -182,20 +184,20 @@
             android:inputType="textPassword"
             android:paddingStart="10dp"
             android:layout_marginTop="0dp"
-            android:textColor="@color/purple_700"
-            android:textColorHint="@color/purple_700"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:padding="10dp"
             android:background="@drawable/login_edittext_bg"
             android:textCursorDrawable="@drawable/login_corner"/>
     </soup.neumorphism.NeumorphCardView>
 
-    <soup.neumorphism.NeumorphButton
-        style="@style/Widget.Neumorph.Button"
+    <Button
+        android:background="@drawable/button_round"
         android:layout_below="@id/confirmpasswrod1"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Next"
-        android:textColor="@color/purple_700"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         android:layout_marginStart="90dp"
@@ -212,6 +214,9 @@
         android:padding="10dp"
         android:textAlignment="center"
         android:textColor="@color/purple_700"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginTop="5dp"
         />
 
 

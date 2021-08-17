@@ -12,6 +12,7 @@
             android:text="Category"
             android:textColor="@color/purple_700"
             android:textStyle="bold"
+            android:textSize="20sp"
             style="@style/TextAppearance.AppCompat.Large"
             android:padding="15dp"
             android:textAlignment="center"/>
@@ -19,24 +20,31 @@
         <EditText
             android:id="@+id/categoryText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55sp"
+            android:textSize="18sp"
+            android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:hint="Please select category"
             android:textAlignment="center"
-            android:padding="15dp"/>
+            android:background="@drawable/custom_edittext"
+            android:padding="15dp"
+            android:layout_marginTop="10dp"/>
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
 
             <TableRow
                 android:gravity="center"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+                android:layout_height="fill_parent"
+                >
 
                 <Button
                     android:id="@+id/breakfastCategory"
                     android:text="Breakfast"
+                    android:background="@drawable/button_round"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
@@ -45,6 +53,7 @@
                 <Button
                     android:id="@+id/lunchCategory"
                     android:text="Lunch"
+                    android:background="@drawable/button_round"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
@@ -52,6 +61,7 @@
 
                 <Button
                     android:id="@+id/dinnerCategory"
+                    android:background="@drawable/button_round"
                     android:text="Dinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -61,10 +71,12 @@
             <TableRow
                 android:gravity="center"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+                android:layout_height="fill_parent"
+                android:layout_marginTop="10dp">
                 <Button
                     android:id="@+id/healthyMealsCategory"
                     android:text="Healthy Meals"
+                    android:background="@drawable/button_round"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
@@ -73,6 +85,7 @@
                 <Button
                     android:id="@+id/snacksCategory"
                     android:text="Snacks"
+                    android:background="@drawable/button_round"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
@@ -81,6 +94,7 @@
                 <Button
                     android:id="@+id/otherCategory"
                     android:text="Other"
+                    android:background="@drawable/button_round"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="3" />
@@ -96,15 +110,21 @@
 
         <Button
             android:id="@+id/publishButton"
-            android:layout_width="match_parent"
+            android:background="@drawable/button_round"
+            android:layout_width="300dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:text="Save Category"/>
+            android:text="Save Category"
+            android:layout_marginTop="20dp"/>
 
         <Button
             android:id="@+id/closeBtn"
-            android:layout_width="match_parent"
+            android:background="@drawable/button_round"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="Close"/>
+            android:layout_gravity="center"
+            android:text="Close"
+            android:layout_marginTop="10dp"/>
 
 
 

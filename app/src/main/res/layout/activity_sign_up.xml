@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    android:background="@drawable/one"
+    android:background="@drawable/bg_sign_up"
     tools:context=".MainActivity">
 
     <TextView
@@ -13,13 +13,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign Up"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:textColor="@color/purple_700"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="160dp"
         android:layout_marginStart="15dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -28,9 +29,10 @@
 
     <TextView
         android:id="@+id/usernameLabel"
+        android:layout_marginStart="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:textColor="@color/purple_700"
         android:text="Please input your desired username:"
         android:layout_below="@+id/signUpText"
@@ -55,23 +57,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Username or email"
-        android:textColorHint="@color/purple_700"
+        android:textColorHint="@color/black"
         android:paddingStart="10dp"
         android:layout_marginTop="0dp"
-        android:textColor="@color/purple_700"
+        android:textColor="@color/black"
         android:padding="10dp"
         android:background="@drawable/login_edittext_bg"
         android:textCursorDrawable="@drawable/login_corner"/>
     </soup.neumorphism.NeumorphCardView>
 
 
-    <soup.neumorphism.NeumorphButton
-        style="@style/Widget.Neumorph.Button"
+    <Button
+        android:background="@drawable/button_round"
         android:layout_below="@id/usernameInputText1"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Next"
-        android:textColor="@color/purple_700"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         android:layout_marginStart="90dp"
@@ -88,7 +90,10 @@
         android:layout_below="@+id/nextBtn"
         android:padding="10dp"
         android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="18sp"
         android:textColor="@color/purple_700"
+        android:layout_marginTop="5dp"
         />
 
 </RelativeLayout>

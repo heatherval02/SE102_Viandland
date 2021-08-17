@@ -11,17 +11,28 @@
             android:layout_height="wrap_content"
             android:text="Add Instruction"
             android:padding="15dp"
+            android:textSize="20sp"
+            android:textColor="@color/purple_700"
+            android:textStyle="bold"
             android:textAlignment="center"/>
 
         <EditText
             android:id="@+id/instructionText"
+            android:background="@drawable/custom_edittext"
+            android:textColorHint="@color/black"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_height="55sp"
+            android:textColor="@color/black"
+            android:padding="10dp"
             android:hint="Ex. prepare all ingredients"/>
 
         <Button
             android:id="@+id/addIInstructionBtn"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
+            android:background="@drawable/button_round"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
             android:layout_height="wrap_content"
             android:text="Add Instruction"/>
 
