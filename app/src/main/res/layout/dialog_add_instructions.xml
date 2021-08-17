@@ -11,14 +11,11 @@
             android:layout_height="wrap_content"
             android:text="Add Instruction"
             android:padding="15dp"
-<<<<<<< HEAD
             android:textSize="20sp"
             android:textColor="@color/purple_700"
             android:textStyle="bold"
             android:textAlignment="center"/>
-=======
-            android:textAlignment="center" />
->>>>>>> 0e81e6ac1398f994a1f8f674804735c1ac49403a
+
 
         <EditText
             android:id="@+id/instructionText"
