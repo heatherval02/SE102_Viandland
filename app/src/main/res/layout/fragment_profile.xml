@@ -122,7 +122,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/added_recipelabel"
                 android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginRight="15dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
         </RelativeLayout>
 
 

@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Viandland"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ActivityViewRecipe"></activity>
+        <activity android:name=".ActivityViewRecipe" />
         <activity android:name=".SearchRecipeActivity" />
         <activity android:name=".UploadRecipeActivity" />
         <activity android:name=".ActivityAddSteps" />

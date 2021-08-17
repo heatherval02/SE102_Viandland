@@ -1,5 +1,6 @@
 package com.example.viandland;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -18,17 +19,28 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment implements AdapterOwnRecipes.IUserRecycler {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -80,26 +92,27 @@ public class ProfileFragment extends Fragment {
     AdapterOwnRecipes ownRecipesAdapter;
     List<ModelOwnRecipes> modelOwnRecipesList;
 
+    View view;
+
+    ProgressDialog progressDialog;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view = inflater.inflate(R.layout.fragment_profile_details, container, false);
-
+        view = inflater.inflate(R.layout.fragment_profile_details, container, false);
+        progressDialog = new ProgressDialog(getActivity());
 
         modelOwnRecipesList = new ArrayList<>();
         recyclerView = view.findViewById(R.id.ownRecipesRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false));
 
-        modelOwnRecipesList.add(new ModelOwnRecipes(1, "Kare-Kare","https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Kare-kare_oxtail_stew_1.jpg/1200px-Kare-kare_oxtail_stew_1.jpg"));
-        modelOwnRecipesList.add(new ModelOwnRecipes(2, "Kaldereta","http://images.summitmedia-digital.com/yummyph/images/2017/11/23/beef-kaldereta.jpg"));
-        modelOwnRecipesList.add(new ModelOwnRecipes(3, "Lechon Kawali","https://www.seriouseats.com/thmb/3XcY0M1U6dM8uH17eEvFopQtHmE=/1500x1125/filters:fill(auto,1)/20210508-lechon-kawali-melissa-hom-2-inchChunks-seriouseats-1d53c12cee234305b921362e2106bf29.jpg"));
-
-        ownRecipesAdapter = new AdapterOwnRecipes(view.getContext(), modelOwnRecipesList) ;
-        recyclerView.setAdapter(ownRecipesAdapter);
+        progressDialog.setMessage("Please wait while retrieving your own recipes");
+        progressDialog.show();
+        ShowOwnRecipes(String.valueOf(SharedPrefManager.getUid()));
 
 
         logoutBtn = view.findViewById(R.id.logoutBtn);
@@ -117,9 +130,6 @@ public class ProfileFragment extends Fragment {
         });
 
 
-
-
-
         userFullname = view.findViewById(R.id.userFullNameText);
         userFullname.setText(SharedPrefManager.getFullname());
 
@@ -134,5 +144,67 @@ public class ProfileFragment extends Fragment {
 
 
         return view;
+    }
+
+    private void ShowOwnRecipes(String uid) {
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_GETOWNRECIPES,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+
+                            progressDialog.dismiss();
+                            JSONArray places = new JSONArray(response);
+
+                            for (int i = 0; i < places.length(); i++){
+                                JSONObject recipesObject = places.getJSONObject(i);
+
+                                int recipe_id = recipesObject.getInt("recipe_id");
+                                String recipe_name = recipesObject.getString("recipe_name");
+                                String recipe_image = recipesObject.getString("recipe_image");
+
+                                modelOwnRecipesList.add(new ModelOwnRecipes(recipe_id, recipe_name,recipe_image));
+                            }
+                            ownRecipesAdapter = new AdapterOwnRecipes(getContext(), modelOwnRecipesList, ProfileFragment.this::showEditDialog) ;
+                            recyclerView.setAdapter(ownRecipesAdapter);
+
+                        } catch (JSONException e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(getContext(), "Error JSON "+ e, Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<>();
+                params.put("uid", uid);
+                return params;
+            }
+        };
+
+        RequestHandler.getInstance(getContext()).addToRequestQueue(stringRequest);
+    }
+
+    @Override
+    public void showEditDialog(String recipeId) {
+
+
+        Toast.makeText(view.getContext(), "This one is under development " + recipeId, Toast.LENGTH_SHORT).show();
+
+
     }
 }
