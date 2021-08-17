@@ -14,7 +14,8 @@
             android:textColor="@color/purple_700"
             android:textStyle="bold"
             android:padding="15dp"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            />
 
         <EditText
             android:id="@+id/ingredientsText"

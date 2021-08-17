@@ -166,12 +166,12 @@ public class ActivityViewRecipe extends AppCompatActivity {
                                 addInstructionsFromRecipes(recipe_id);
                             }
                             if (from.equalsIgnoreCase("trending_recipes")){
-                                addIngredientsFromRecipes(recipe_id);
-                                addInstructionsFromRecipes(recipe_id);
+                                addIngredientsFromTrendingRecipes(recipe_id);
+                                addInstructionsFromTrendingRecipes(recipe_id);
                             }
-                            if (from.equalsIgnoreCase("todays_recipes")) {
-                                addIngredientsFromRecipes(recipe_id);
-                                addInstructionsFromRecipes(recipe_id);
+                            if (from.equalsIgnoreCase("todays_recipe")) {
+                                addIngredientsFromTodaysRecipe(recipe_id);
+                                addInstructionFromTodaysRecipe(recipe_id);
                             }
 
 
@@ -243,9 +243,9 @@ public class ActivityViewRecipe extends AppCompatActivity {
                                 addIngredientsFromTrendingRecipes(recipe_id);
                                 addInstructionsFromTrendingRecipes(recipe_id);
                             }
-                            if (from.equalsIgnoreCase("todays_recipes")) {
+                            if (from.equalsIgnoreCase("todays_recipe")) {
                                 addIngredientsFromTodaysRecipe(recipe_id);
-                                addIngInstructionFromTodaysRecipe(recipe_id);
+                                addInstructionFromTodaysRecipe(recipe_id);
                             }
 
 
@@ -316,12 +316,12 @@ public class ActivityViewRecipe extends AppCompatActivity {
                                 addInstructionsFromRecipes(recipe_id);
                             }
                             if (from.equalsIgnoreCase("trending_recipes")){
-                                addIngredientsFromRecipes(recipe_id);
-                                addInstructionsFromRecipes(recipe_id);
+                                addIngredientsFromTrendingRecipes(recipe_id);
+                                addInstructionsFromTrendingRecipes(recipe_id);
                             }
-                            if (from.equalsIgnoreCase("todays_recipes")) {
-                                addIngredientsFromRecipes(recipe_id);
-                                addInstructionsFromRecipes(recipe_id);
+                            if (from.equalsIgnoreCase("todays_recipe")) {
+                                addIngredientsFromTodaysRecipe(recipe_id);
+                                addInstructionFromTodaysRecipe(recipe_id);
                             }
 
 
@@ -458,7 +458,7 @@ public class ActivityViewRecipe extends AppCompatActivity {
     }
 
 
-    private void addIngInstructionFromTodaysRecipe(String recipe_id) {
+    private void addInstructionFromTodaysRecipe(String recipe_id) {
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
                 Constants.URL_GETINSTRUCTIONFROMTODAYS,
