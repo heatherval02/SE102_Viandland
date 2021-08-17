@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
@@ -59,13 +59,7 @@
                     android:layout_column="2"
                     android:layout_marginRight="5dp"/>
 
-                <Button
-                    android:id="@+id/dinnerCategory"
-                    android:background="@drawable/button_round"
-                    android:text="Dinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="3" />
+
 
             </TableRow>
             <TableRow
@@ -73,14 +67,36 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_marginTop="10dp">
+
+                <Button
+                    android:id="@+id/dinnerCategory"
+                    android:background="@drawable/button_round"
+                    android:text="Dinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginRight="5dp"/>
+                
                 <Button
                     android:id="@+id/healthyMealsCategory"
                     android:text="Healthy Meals"
                     android:background="@drawable/button_round"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
+                    android:layout_column="2"
                     android:layout_marginRight="5dp"/>
+
+
+
+
+
+            </TableRow>
+
+            <TableRow
+                android:gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="10dp">
 
                 <Button
                     android:id="@+id/snacksCategory"
@@ -88,8 +104,9 @@
                     android:background="@drawable/button_round"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_column="2"
+                    android:layout_column="1"
                     android:layout_marginRight="5dp"/>
+
 
                 <Button
                     android:id="@+id/otherCategory"
@@ -97,10 +114,10 @@
                     android:background="@drawable/button_round"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_column="3" />
+                    android:layout_column="2"
+                    android:layout_marginRight="5dp"/>
 
             </TableRow>
-
 
 
 
