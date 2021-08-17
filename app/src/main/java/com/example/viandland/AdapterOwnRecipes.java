@@ -1,6 +1,7 @@
 package com.example.viandland;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,12 +19,15 @@ import java.util.List;
 
 public class AdapterOwnRecipes extends RecyclerView.Adapter<AdapterOwnRecipes.AdapterOwnRecipesViewHolder>{
 
+
     Context mCtx;
     List<ModelOwnRecipes> modelOwnRecipesList;
+    IUserRecycler mListener;
 
-    public AdapterOwnRecipes(Context mCtx, List<ModelOwnRecipes> modelOwnRecipesList) {
+    public AdapterOwnRecipes(Context mCtx, List<ModelOwnRecipes> modelOwnRecipesList, IUserRecycler mListener) {
         this.mCtx = mCtx;
         this.modelOwnRecipesList = modelOwnRecipesList;
+        this.mListener = mListener;
     }
 
     @NonNull
@@ -31,7 +35,7 @@ public class AdapterOwnRecipes extends RecyclerView.Adapter<AdapterOwnRecipes.Ad
     public AdapterOwnRecipesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.list_own_recipes, null);
-        return new AdapterOwnRecipes.AdapterOwnRecipesViewHolder(view);
+        return new AdapterOwnRecipes.AdapterOwnRecipesViewHolder(view, mListener);
 
     }
 
@@ -48,7 +52,17 @@ public class AdapterOwnRecipes extends RecyclerView.Adapter<AdapterOwnRecipes.Ad
         holder.recipeImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mCtx, "Recipe Id: " + modelOwnRecipes.recipe_id , Toast.LENGTH_SHORT).show();
+                Intent newIntent = new Intent(mCtx, ActivityViewRecipe.class);
+                newIntent.putExtra("recipe_id", String.valueOf(modelOwnRecipes.recipe_id));
+                newIntent.putExtra("from", "recipes");
+                mCtx.startActivity(newIntent);
+
+            }
+        });
+        holder.editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.showEditDialog(String.valueOf(modelOwnRecipes.recipe_id));
             }
         });
 
@@ -63,13 +77,20 @@ public class AdapterOwnRecipes extends RecyclerView.Adapter<AdapterOwnRecipes.Ad
 
         ImageView recipeImage;
         TextView recipeName;
+        ImageView editButton;
+        IUserRecycler mListener;
 
-        public AdapterOwnRecipesViewHolder(@NonNull View itemView) {
+        public AdapterOwnRecipesViewHolder(@NonNull View itemView,  IUserRecycler mListener) {
             super(itemView);
-
+            this.mListener = mListener;
             recipeImage = itemView.findViewById(R.id.recipeImage);
             recipeName = itemView.findViewById(R.id.recipeName);
+            editButton = itemView.findViewById(R.id.editButton);
         }
+    }
+
+    interface IUserRecycler{
+        void showEditDialog(String recipeId);
     }
 
 
