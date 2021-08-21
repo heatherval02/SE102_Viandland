@@ -7,6 +7,14 @@
     android:background="@drawable/bg_main_login"
     tools:context=".MainActivity">
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
 
 
     <TextView
@@ -42,17 +50,19 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <soup.neumorphism.NeumorphCardView
+    <androidx.cardview.widget.CardView
         style="@style/Widget.Neumorph.CardView"
         android:id="@+id/usernameInputText1"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/loginText1"
         android:layout_marginTop="10dp"
+        android:padding="10dp"
         app:neumorph_shapeType="pressed"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:focusable="true">
+        android:focusable="true"
+        app:cardCornerRadius="10dp">
 
         <EditText
             android:id="@+id/usernameInputText"
@@ -60,58 +70,69 @@
             android:layout_height="match_parent"
             android:hint="Username or email"
             android:textColor="@color/black"
-            android:padding="10dp"
-            android:textColorHint="@color/black"
+            android:padding="15dp"
+            android:textColorHint="#909090"
             android:paddingStart="10dp"
-            android:background="@drawable/login_edittext_bg"
+            android:background="@drawable/custom_edittext"
             android:textCursorDrawable="@drawable/login_corner"
+            android:focusable="true"
             android:drawableLeft="@drawable/ic_baseline_person_24"/>
 
-    </soup.neumorphism.NeumorphCardView>
+    </androidx.cardview.widget.CardView>
 
-    <soup.neumorphism.NeumorphCardView
+    <androidx.cardview.widget.CardView
         style="@style/Widget.Neumorph.CardView"
         android:id="@+id/password2"
         android:layout_below="@id/usernameInputText1"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
         android:layout_marginTop="10dp"
         app:neumorph_shapeType="pressed"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp">
+        android:layout_marginEnd="10dp"
+        app:cardCornerRadius="10dp">
 
         <EditText
             android:id="@+id/passwordInputText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="@color/black"
-            android:padding="10dp"
-            android:textColorHint="@color/black"
+            android:padding="15dp"
+            android:textColorHint="#909090"
             android:hint="Password"
             android:inputType="textPassword"
-            android:background="@drawable/login_edittext_bg"
+            android:background="@drawable/custom_edittext"
             android:textCursorDrawable="@drawable/login_corner"
             android:drawableLeft="@drawable/ic_baseline_lock_24"
             android:focusable="true"
             />
 
-    </soup.neumorphism.NeumorphCardView>
+    </androidx.cardview.widget.CardView>
 
 
     <Button
-        android:layout_below="@id/password2"
-        android:layout_width="200dp"
+        android:id="@+id/loginBtn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/password2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="101dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="111dp"
+        android:background="@drawable/button_round"
         android:text="Login"
+        android:textAlignment="center"
+        android:layout_centerInParent="true"
         android:textColor="@color/white"
         android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="10dp"
-        android:id="@+id/loginBtn"
-        android:background="@drawable/button_round"
-
-        />
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
+        android:paddingEnd="20dp"
+        android:paddingLeft="40dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/signUpLink"
@@ -121,8 +142,9 @@
         android:text="Click here to sign up"
         android:textColor="@color/purple_700"
         android:textAlignment="center"
+        android:gravity="center"
         android:padding="10dp"
-        android:textSize="18sp"
+        android:textSize="12sp"
         android:textStyle="bold"/>
 
     <LinearLayout
@@ -133,5 +155,7 @@
 
 
     </LinearLayout>
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>

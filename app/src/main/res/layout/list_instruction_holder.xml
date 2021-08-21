@@ -18,9 +18,9 @@
 
             <TextView
                 android:id="@+id/instructionText"
-                android:textColor="@color/black"
+                android:textColor="#909090"
                 android:text="Instructions"
-                android:textStyle="bold"
+                android:textStyle="italic"
                 android:layout_toLeftOf="@+id/deleteBtn"
                 style="@style/TextAppearance.AppCompat.Medium"
                 android:layout_marginTop="10dp"
@@ -29,8 +29,8 @@
                 android:layout_height="wrap_content" />
             <ImageButton
                 android:id="@+id/deleteBtn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:background="@drawable/ic_baseline_delete_24"

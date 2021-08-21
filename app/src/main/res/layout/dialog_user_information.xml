@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="15dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:paddingBottom="30dp"
+        android:background="@drawable/dialog_bg1">
+
+        <ImageButton
+            android:id="@+id/closeBtn"
+            android:background="@drawable/ic_baseline_close_24"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="-7dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User Information"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:textColor="@color/purple_700"
+            android:textStyle="bold"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/uidText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Uid : "
+            android:padding="5dp"
+            android:textSize="14sp"
+            android:textColor="@color/purple_700"
+            android:textStyle="italic"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/usernameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Username : "
+            android:padding="5dp"
+            android:textSize="14sp"
+            android:textColor="@color/purple_700"
+            android:textStyle="italic"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/fullnameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Fullname : "
+            android:textAlignment="center"
+            android:textColor="@color/purple_700"
+            android:textSize="14sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/emailText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email : "
+            android:padding="5dp"
+            android:textSize="14sp"
+            android:textColor="@color/purple_700"
+            android:textStyle="italic"
+            android:layout_marginBottom="20dp"
+            android:textAlignment="center"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

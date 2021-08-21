@@ -12,7 +12,7 @@ import java.util.TimerTask;
 public class SplashScreen extends AppCompatActivity {
 
     private Timer splashTimer;
-    private static final long DELAY =10000;
+    private static final long DELAY = 5000;
     private boolean scheduled = false;
     Context context;
 

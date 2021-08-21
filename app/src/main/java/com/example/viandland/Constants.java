@@ -49,5 +49,9 @@ public class Constants {
     public static final String URL_REMOVEFAVORITES = ROOT_URL + "removeFavorites.php";
 
     public static final String URL_GETOWNRECIPES = ROOT_URL + "getOwnRecipes.php";
+    public static final String URL_REMOVERECIPE = ROOT_URL + "removeRecipe.php";
+
+
+
 
 }

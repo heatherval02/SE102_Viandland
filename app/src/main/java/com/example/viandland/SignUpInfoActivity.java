@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -28,12 +29,24 @@ public class SignUpInfoActivity extends AppCompatActivity {
     int emailCheck;
     EditText firstname, lastname, phone, email, password, confirmPassword;
     Button signUpBtn;
+    TextView backBtn;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_info);
+
+        backBtn = findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent newIntent = new Intent(SignUpInfoActivity.this, MainActivity.class);
+                // Intent newIntent = new Intent(MainActivity.this, ActivityAddIngredients.class);
+                startActivity(newIntent);
+            }
+        });
 
         String username =  getIntent().getStringExtra("username");
         firstname = findViewById(R.id.firstname);
@@ -83,7 +96,16 @@ public class SignUpInfoActivity extends AppCompatActivity {
                                     try {
                                         JSONObject messageObj = new JSONObject(response);
 
-                                        Toast.makeText(SignUpInfoActivity.this, messageObj.getString("message"), Toast.LENGTH_SHORT).show();
+                                       String stringMsg = messageObj.getString("message");
+
+                                       if (stringMsg.equalsIgnoreCase("Email already used, please use another email")){
+                                           Toast.makeText(SignUpInfoActivity.this, stringMsg, Toast.LENGTH_SHORT).show();
+                                       } else {
+                                           Intent newIntent = new Intent(SignUpInfoActivity.this, MainActivity.class);
+                                           // Intent newIntent = new Intent(MainActivity.this, ActivityAddIngredients.class);
+                                           startActivity(newIntent);
+                                           finish();
+                                       }
 
 
                                     } catch (JSONException e) {

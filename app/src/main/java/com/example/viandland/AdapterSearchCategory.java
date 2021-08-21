@@ -41,7 +41,7 @@ public class AdapterSearchCategory extends RecyclerView.Adapter<AdapterSearchCat
 
         Glide.with(mCtx)
                 .load( modelCategoryResults.getRecipe_image())
-                //.placeholder(R.drawable.loader)
+                .placeholder(R.drawable.cartoon2)
                 .into(holder.recipeImage);
         holder.recipeImage.setOnClickListener(new View.OnClickListener() {
             @Override

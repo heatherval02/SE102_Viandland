@@ -66,9 +66,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="55sp"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="18sp"
+                android:textColorHint="#808080"
+                android:textSize="14sp"
                 android:layout_marginTop="5dp"
+                android:paddingLeft="16dp"
                 android:background="@drawable/custom_edittext"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"/>
@@ -80,12 +81,13 @@
                 android:layout_height="55sp"
                 android:hint="Recipe Preparation"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="18sp"
-                android:layout_marginTop="5dp"
+                android:textColorHint="#808080"
+                android:textSize="14sp"
+                android:layout_marginTop="3dp"
                 android:background="@drawable/custom_edittext"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"/>
+                android:layout_marginEnd="10dp"
+                android:paddingLeft="16dp"/>
 
 
             <EditText
@@ -95,19 +97,23 @@
                 android:maxLines="3"
                 android:hint="Description"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="18sp"
-                android:layout_marginTop="5dp"
+                android:textColorHint="#808080"
+                android:textSize="14sp"
+                android:layout_marginTop="3dp"
                 android:background="@drawable/custom_edittext"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"/>
+                android:layout_marginEnd="10dp"
+                android:paddingLeft="16dp"/>
 
             <Button
                 android:id="@+id/selectImageBtn"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Select Photo"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginTop="10dp"
+                android:textSize="12sp"
                 android:background="@drawable/button_round"
                 android:layout_gravity="center"/>
 
@@ -117,22 +123,28 @@
                 android:layout_height="250dp"
                 android:background="@drawable/no_image_to_show_"
                 android:scaleType="centerCrop"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="5dp"/>
 
             <Button
                 android:id="@+id/previewBtn"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Preview"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:background="@drawable/button_round"
                 android:layout_gravity="center"/>
 
         <Button
             android:id="@+id/saveBtn"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Save Recipe"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:background="@drawable/button_round"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"/>

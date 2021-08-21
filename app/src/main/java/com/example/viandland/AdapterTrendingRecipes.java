@@ -52,7 +52,7 @@ public class AdapterTrendingRecipes extends PagerAdapter {
 
         Glide.with(context)
                 .load(trendingRecipesModel.getRecipe_image())
-                //.placeholder(R.drawable.loader)
+                .placeholder(R.drawable.cartoon2)
                 .into(trendingRecipeImage);
 
         trendingRecipeImage.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +84,7 @@ public class AdapterTrendingRecipes extends PagerAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "You Clicked: " + trendingRecipesModel.getRecipe_id(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Click image photo to show details " + trendingRecipesModel.getRecipe_id(), Toast.LENGTH_SHORT).show();
             }
         });
 

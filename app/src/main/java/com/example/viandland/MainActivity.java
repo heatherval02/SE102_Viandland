@@ -2,11 +2,20 @@ package com.example.viandland;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,17 +41,53 @@ public class MainActivity extends AppCompatActivity {
 
     SharedPrefManager userCredentials;
 
+    boolean connected = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (SharedPrefManager.getInstance(this).isLoggedIn()){
-            finish();
-           Intent newIntent = new Intent(MainActivity.this, MainpageDashboard.class);
-           // Intent newIntent = new Intent(MainActivity.this, ActivityAddIngredients.class);
-            startActivity(newIntent);
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+                    if (SharedPrefManager.getInstance(this).isLoggedIn()){
+                        finish();
+                        Intent newIntent = new Intent(MainActivity.this, MainpageDashboard.class);
+                        // Intent newIntent = new Intent(MainActivity.this, ActivityAddIngredients.class);
+                        startActivity(newIntent);
+                    }
+
+
+            connected = true;
         }
+        else {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            ViewGroup viewGroup = findViewById(android.R.id.content);
+            View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.dialog_connection_lost, viewGroup, false);
+
+            Button closeButton = dialogView.findViewById(R.id.closeButton);
+
+            builder.setView(dialogView);
+            AlertDialog alertDialog = builder.create();
+
+            closeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alertDialog.dismiss();
+                }
+            });
+
+
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            alertDialog.show();
+
+            connected = false;
+        }
+
+
 
     usernameInputText = findViewById(R.id.usernameInputText);
     passwordInputText = findViewById(R.id.passwordInputText);
@@ -76,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                                     }
 
                                 } catch (JSONException e) {
-                                    Toast.makeText(MainActivity.this, "Error on JSON : " + e, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainActivity.this, "Kindly Check your Internet Connection", Toast.LENGTH_SHORT).show();
                                 }
 
                             }
@@ -84,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Kindly Check your Internet Connection", Toast.LENGTH_LONG).show();
                             }
                         }
 
@@ -140,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
                             }
 
                         } catch (JSONException e) {
-                            Toast.makeText(MainActivity.this, "Error on JSON : " + e, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Kindly Check your Internet Connection,", Toast.LENGTH_SHORT).show();
                         }
 
                     }

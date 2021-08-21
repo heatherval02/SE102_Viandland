@@ -15,16 +15,21 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -56,6 +61,8 @@ public class UploadRecipeActivity extends AppCompatActivity{
         ImageView imageUpload;
         ImageView backBtn;
 
+        Button previewButton;
+
         final int CODE_GALLERY_REQUEST = 999;
         Bitmap bitmap;
 
@@ -77,6 +84,63 @@ public class UploadRecipeActivity extends AppCompatActivity{
             btnChoose = findViewById(R.id.selectImageBtn);
             imageUpload = findViewById(R.id.recipeImage);
             saveButton = findViewById(R.id.saveBtn);
+
+            previewButton = findViewById(R.id.previewBtn);
+            previewButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+
+                    if (recipeName.getText().toString().isEmpty() || recipePrepTime.getText().toString().isEmpty() ||recipeDescription.getText().toString().isEmpty()){
+                        Toast.makeText(UploadRecipeActivity.this, "Please check some empty fields", Toast.LENGTH_SHORT).show();
+                    } else if (imageUpload.getDrawable() == null){
+                        Toast.makeText(UploadRecipeActivity.this, "Please select a thumbnail", Toast.LENGTH_SHORT).show();
+                    }else {
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(UploadRecipeActivity.this);
+                        ViewGroup viewGroup = findViewById(android.R.id.content);
+                        View dialogView = LayoutInflater.from(v.getContext()).inflate(R.layout.dialog_preview_recipe, viewGroup, false);
+
+                        Button okButton = dialogView.findViewById(R.id.okButton);
+                        ImageButton closeButton = dialogView.findViewById(R.id.closeBtn);
+                        TextView recipeNameText = dialogView.findViewById(R.id.recipeNameText);
+                        TextView recipePrepTimeText = dialogView.findViewById(R.id.recipePrepText);
+                        TextView recipeDescriptionText = dialogView.findViewById(R.id.recipeDescriptionText);
+                        ImageView recipeImageView = dialogView.findViewById(R.id.imageView2);
+
+                        Glide.with(dialogView)
+                                .load(bitmap)
+                                .into(recipeImageView);
+
+                        recipeNameText.setText("Recipe name : " + recipeName.getText().toString());
+                        recipePrepTimeText.setText("Estimated preperation : " + recipePrepTime.getText().toString());
+                        recipeDescriptionText.setText("Recipe Description : " + recipeDescription.getText().toString());
+
+                        builder.setView(dialogView);
+                        AlertDialog alertDialog = builder.create();
+                        closeButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                alertDialog.dismiss();
+                            }
+                        });
+
+                        okButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                alertDialog.dismiss();
+                            }
+                        });
+
+                        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        alertDialog.show();
+
+
+
+
+                    }
+                }
+            });
 
             saveButton.setOnClickListener(new View.OnClickListener() {
                 @Override

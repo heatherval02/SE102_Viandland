@@ -161,7 +161,7 @@ public class FragmentInfo extends Fragment {
 
                         } catch (JSONException e) {
                             progressDialog.dismiss();
-                            Toast.makeText(getContext(), "Error in Json" + e, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), "Kindly Check your Internet Connection", Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -170,7 +170,7 @@ public class FragmentInfo extends Fragment {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
-                        Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "Kindly Check your Internet Connection", Toast.LENGTH_SHORT).show();
                     }
                 }
 

@@ -47,7 +47,7 @@ public class AdapterWhatsNew extends RecyclerView.Adapter<AdapterWhatsNew.Adapat
 
         Glide.with(mCtx)
                 .load(modelrecentlyAdded.getRecipe_image())
-                //.placeholder(R.drawable.loader)
+                .placeholder(R.drawable.cartoon2)
                 .into(holder.recipeImage);
         holder.recipeImage.setOnClickListener(new View.OnClickListener() {
             @Override

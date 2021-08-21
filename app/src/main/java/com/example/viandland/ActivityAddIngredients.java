@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.LayoutInflater;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -37,6 +40,7 @@ public class ActivityAddIngredients extends AppCompatActivity{
     ImageView backBtn;
     String recipeId;
     Button saveAll;
+    String fromActivity;
 
     RecyclerView ingredientsRecyclerView;
     AdapterIngredientsList ingredientsListAdapter;
@@ -65,6 +69,10 @@ public class ActivityAddIngredients extends AppCompatActivity{
                 finish();
             }
         });
+
+
+
+
         backBtn = findViewById(R.id.backBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +87,7 @@ public class ActivityAddIngredients extends AppCompatActivity{
 
         Button confirmButton = confirmDialogView.findViewById(R.id.confirmButton);
         Button cancelButton = confirmDialogView.findViewById(R.id.cancelButton);
+        ImageButton closeButton = confirmButton.findViewById(R.id.closeBtn);
 
         confirmDialog .setView(confirmDialogView);
         AlertDialog alertDialogConfirm = confirmDialog .create();
@@ -86,10 +95,8 @@ public class ActivityAddIngredients extends AppCompatActivity{
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addRecipe(getIntent().getStringExtra("temp_id"), getIntent().getStringExtra("uniq_id"), String.valueOf(SharedPrefManager.getUid()));
-                alertDialogConfirm.dismiss();
-
-
+                            addRecipe(getIntent().getStringExtra("temp_id"), getIntent().getStringExtra("uniq_id"), String.valueOf(SharedPrefManager.getUid()));
+                            alertDialogConfirm.dismiss();
             }
         });
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +108,7 @@ public class ActivityAddIngredients extends AppCompatActivity{
             }
         });
 
+        alertDialogConfirm.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alertDialogConfirm.show();
 
 
@@ -114,9 +122,20 @@ public class ActivityAddIngredients extends AppCompatActivity{
 
                 EditText ingredientsText = dialogView.findViewById(R.id.ingredientsText);
                 Button addIngredientsButton = dialogView.findViewById(R.id.addIngredientsBtn);
+                ImageButton closeButton = dialogView.findViewById(R.id.closeBtn);
+
 
                 builder.setView(dialogView);
                 AlertDialog alertDialog = builder.create();
+                closeButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+
+
+
                 addIngredientsButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -124,6 +143,8 @@ public class ActivityAddIngredients extends AppCompatActivity{
                         alertDialog.dismiss();
                     }
                 });
+
+                alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 alertDialog.show();
             }
         });

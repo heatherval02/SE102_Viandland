@@ -184,7 +184,7 @@ public class FragmentDashboard extends Fragment {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
-                        Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Kindly Check your Internet Connection", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -232,7 +232,7 @@ public class FragmentDashboard extends Fragment {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
-                        Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Kindly Check your Internet Connection", Toast.LENGTH_SHORT).show();
 
                     }
                 });

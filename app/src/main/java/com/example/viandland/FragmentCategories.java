@@ -139,7 +139,7 @@ public class FragmentCategories extends Fragment {
         breakfastBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searchFood("Breakfast");
+                searchFood("breakfast");
             }
 
         });
@@ -147,28 +147,28 @@ public class FragmentCategories extends Fragment {
         lunchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searchFood("Lunch");
+                searchFood("lunch");
             }
         });
         dinnerBtn = mview.findViewById(R.id.dinnerBtn);
         dinnerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searchFood("Dinner");
+                searchFood("dinner");
             }
         });
         healthyMealsBtn = mview.findViewById(R.id. healthyMealsBtn);
         healthyMealsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searchFood("Healthy Meals");
+                searchFood("healthy");
             }
         });
         snacksBtn = mview.findViewById(R.id.snacksBtn);
         snacksBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searchFood("Snacks");
+                searchFood("snacks");
             }
         });
 
@@ -176,7 +176,7 @@ public class FragmentCategories extends Fragment {
         kidsMealBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                searchFood("Kid's Meals");
+                searchFood("kids");
             }
         });
 
@@ -231,7 +231,7 @@ public class FragmentCategories extends Fragment {
 
                         } catch (JSONException e) {
                             progressDialog.dismiss();
-                            Toast.makeText(getContext(), "Error JSON "+ e, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), "Kindly Check your Internet Connection", Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -240,7 +240,7 @@ public class FragmentCategories extends Fragment {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
-                        Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "Kindly Check your Internet Connection", Toast.LENGTH_SHORT).show();
                     }
                 }
 

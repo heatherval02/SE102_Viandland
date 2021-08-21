@@ -143,7 +143,7 @@ public class FragmentFavorites extends Fragment implements AdapterFavoriteRecipe
 
                         } catch (JSONException e) {
                             progressDialog.dismiss();
-                            Toast.makeText(getContext(), "Error JSON "+ e, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), "Kindly Check your Internet Connection", Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -152,7 +152,7 @@ public class FragmentFavorites extends Fragment implements AdapterFavoriteRecipe
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
-                        Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "Kindly Check your Internet Connection", Toast.LENGTH_SHORT).show();
                     }
                 }
 

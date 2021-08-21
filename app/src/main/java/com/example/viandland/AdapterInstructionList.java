@@ -86,7 +86,7 @@ public class AdapterInstructionList extends RecyclerView.Adapter<AdapterInstruct
                             }
 
                         } catch (JSONException e) {
-                            Toast.makeText(mCtx, "Error on JSON HERE: "+ e, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mCtx, "Kindly Check your Internet Connection", Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -94,7 +94,7 @@ public class AdapterInstructionList extends RecyclerView.Adapter<AdapterInstruct
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(mCtx, "Error :" + error, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mCtx, "Kindly Check your Internet Connection", Toast.LENGTH_SHORT).show();
                     }
                 }
 

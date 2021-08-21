@@ -10,7 +10,7 @@
         android:id="@+id/textview1"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:text="Your favorite recipe's"
+        android:text="Your favourite recipes"
         android:gravity="center_vertical"
         android:paddingLeft="20dp"
         android:textStyle="bold"

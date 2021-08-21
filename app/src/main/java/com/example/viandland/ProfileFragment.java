@@ -1,7 +1,10 @@
 package com.example.viandland;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -15,6 +18,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +39,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import io.alterac.blurkit.RoundedImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -92,6 +99,8 @@ public class ProfileFragment extends Fragment implements AdapterOwnRecipes.IUser
     AdapterOwnRecipes ownRecipesAdapter;
     List<ModelOwnRecipes> modelOwnRecipesList;
 
+    ImageView profileButton;
+
     View view;
 
     ProgressDialog progressDialog;
@@ -104,6 +113,40 @@ public class ProfileFragment extends Fragment implements AdapterOwnRecipes.IUser
 
         view = inflater.inflate(R.layout.fragment_profile_details, container, false);
         progressDialog = new ProgressDialog(getActivity());
+
+
+        profileButton = view.findViewById(R.id.imageView4);
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                ViewGroup viewGroup = view.findViewById(android.R.id.content);
+                View dialogView = LayoutInflater.from(v.getContext()).inflate(R.layout.dialog_user_information, viewGroup, false);
+
+                TextView uidText, usernameText, fullnameText, emailText;
+                uidText = dialogView.findViewById(R.id.uidText);
+                usernameText = dialogView.findViewById(R.id.usernameText);
+                fullnameText = dialogView.findViewById(R.id. fullnameText);
+                emailText = dialogView.findViewById(R.id.emailText);
+                ImageButton closeButton = dialogView.findViewById(R.id.closeBtn);
+
+                uidText.setText("Uid : " + String.valueOf(SharedPrefManager.getInstance(view.getContext()).getUid()));
+                usernameText.setText("Username : " + SharedPrefManager.getInstance(view.getContext()).getUsername());
+                fullnameText.setText("Name : " + SharedPrefManager.getInstance(view.getContext()).getFullname());
+                emailText.setText("Email : " + SharedPrefManager.getInstance(view.getContext()).getUserEmail());
+                builder.setView(dialogView);
+                AlertDialog alertDialog = builder.create();
+                closeButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+
+                alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                alertDialog.show();
+            }
+        });
 
         modelOwnRecipesList = new ArrayList<>();
         recyclerView = view.findViewById(R.id.ownRecipesRecyclerView);
@@ -203,7 +246,88 @@ public class ProfileFragment extends Fragment implements AdapterOwnRecipes.IUser
     public void showEditDialog(String recipeId) {
 
 
-        Toast.makeText(view.getContext(), "This one is under development " + recipeId, Toast.LENGTH_SHORT).show();
+        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+        ViewGroup viewGroup = view.findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(view.getContext()).inflate(R.layout.dialog_edit_recipe, viewGroup, false);
+
+        Button editDialogButton = dialogView.findViewById(R.id.editButton);
+        Button deleteDialogButton = dialogView.findViewById(R.id.deleteBtn);
+        ImageButton closeBtn = dialogView.findViewById(R.id.closeBtn);
+
+        builder.setView(dialogView);
+        AlertDialog alertDialog = builder.create();
+
+        editDialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+
+
+                Intent newIntent = new Intent(getContext(), ActivityEditIngredients.class);
+                newIntent.putExtra("recipe_id",recipeId);
+                // Intent newIntent = new Intent(MainActivity.this, ActivityAddIngredients.class);
+                view.getContext().startActivity(newIntent);
+            }
+        });
+        deleteDialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                StringRequest stringRequest = new StringRequest(
+                        Request.Method.POST,
+                        Constants.URL_REMOVERECIPE,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+                                    JSONObject obj = new JSONObject(response);
+                                    if (obj.getString("message").equalsIgnoreCase("Success")){
+                                        Toast.makeText(view.getContext(), "Recipe Deleted Successfully", Toast.LENGTH_SHORT).show();
+                                        modelOwnRecipesList.clear();
+                                        ShowOwnRecipes(String.valueOf(SharedPrefManager.getUid()));
+
+                                    } else {
+                                        Toast.makeText(view.getContext(), "Error Occured Please contact support", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                } catch (JSONException e) {
+                                    Toast.makeText(view.getContext(), "Error on JSON : "+ e, Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(view.getContext(), "Error :" + error, Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                ) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("uid",  String.valueOf(SharedPrefManager.getUid()));
+                        params.put("recipe_id", recipeId);
+                        return params;
+                    }
+                };
+
+                RequestHandler.getInstance(view.getContext()).addToRequestQueue(stringRequest);
+
+
+            }
+        });
+
+        closeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        alertDialog.show();
 
 
     }

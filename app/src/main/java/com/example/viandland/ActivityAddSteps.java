@@ -1,12 +1,16 @@
 package com.example.viandland;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +38,8 @@ import java.util.Map;
 
 public class ActivityAddSteps extends AppCompatActivity implements AdapterInstructionList.IRecyclerViewRefresher {
 
+
+    Dialog selectRecipeDialog;
     ImageButton back;
     Button openStepsDialogButton;
     String recipeId;
@@ -60,25 +66,26 @@ public class ActivityAddSteps extends AppCompatActivity implements AdapterInstru
             @Override
             public void onClick(View v) {
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(ActivityAddSteps.this);
-                ViewGroup viewGroup = findViewById(android.R.id.content);
-                View dialogView = LayoutInflater.from(v.getContext()).inflate(R.layout.dialog_select_category, viewGroup, false);
 
-                EditText categoryText = dialogView.findViewById(R.id.categoryText);
-                Button publishRecipe = dialogView.findViewById(R.id.publishButton);
-                Button closeDialog = dialogView.findViewById(R.id.closeBtn);
+                selectRecipeDialog = new Dialog(ActivityAddSteps.this);
+                selectRecipeDialog.setContentView(R.layout.dialog_select_category);
+
+                EditText categoryText = selectRecipeDialog.findViewById(R.id.categoryText);
+                Button publishRecipe = selectRecipeDialog.findViewById(R.id.publishButton);
+                ImageButton closeDialog = selectRecipeDialog.findViewById(R.id.closeBtn);
 
                 Button breakfastCategory, lunchCategory, dinnerCategory, healthyMealsCategory, snacksCategory, otherCategory;
-                breakfastCategory = dialogView.findViewById(R.id.breakfastCategory);
-                lunchCategory = dialogView.findViewById(R.id.lunchCategory);
-                dinnerCategory = dialogView.findViewById(R.id.dinnerCategory);
-                healthyMealsCategory = dialogView.findViewById(R.id.healthyMealsCategory);
-                snacksCategory = dialogView.findViewById(R.id.snacksCategory);
-                otherCategory = dialogView.findViewById(R.id.otherCategory);
+                breakfastCategory = selectRecipeDialog.findViewById(R.id.breakfastCategory);
+                lunchCategory = selectRecipeDialog.findViewById(R.id.lunchCategory);
+                dinnerCategory = selectRecipeDialog.findViewById(R.id.dinnerCategory);
+                healthyMealsCategory = selectRecipeDialog.findViewById(R.id.healthyMealsCategory);
+                snacksCategory = selectRecipeDialog.findViewById(R.id.snacksCategory);
+                otherCategory = selectRecipeDialog.findViewById(R.id.otherCategory);
 
-                builder.setView(dialogView);
-                AlertDialog alertDialog = builder.create();
 
+
+//
+//
                 breakfastCategory.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -130,7 +137,7 @@ public class ActivityAddSteps extends AppCompatActivity implements AdapterInstru
                                         try {
                                             JSONObject obj = new JSONObject(response);
                                             if (obj.getString("message").equalsIgnoreCase("Success")){
-                                                alertDialog.dismiss();
+                                                selectRecipeDialog.dismiss();
                                                 successDialog();
                                             } else {
                                                 Toast.makeText(ActivityAddSteps.this, "Error Occured Please contact support", Toast.LENGTH_SHORT).show();
@@ -168,11 +175,14 @@ public class ActivityAddSteps extends AppCompatActivity implements AdapterInstru
                 closeDialog.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        alertDialog.dismiss();
+                        selectRecipeDialog.dismiss();
                     }
                 });
 
-                alertDialog.show();
+                selectRecipeDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                selectRecipeDialog.show();
+
+
 
             }
         });
@@ -210,6 +220,7 @@ public class ActivityAddSteps extends AppCompatActivity implements AdapterInstru
 
                     EditText instructionText = dialogView.findViewById(R.id.instructionText);
                     Button addIngredientsButton = dialogView.findViewById(R.id.addIInstructionBtn);
+                    ImageButton closeDialog = dialogView.findViewById(R.id.closeBtn);
 
                     builder.setView(dialogView);
                     AlertDialog alertDialog = builder.create();
@@ -220,6 +231,15 @@ public class ActivityAddSteps extends AppCompatActivity implements AdapterInstru
                             alertDialog.dismiss();
                         }
                     });
+                    closeDialog.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            alertDialog.dismiss();
+                        }
+                    });
+
+
+                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     alertDialog.show();
 
 
@@ -236,6 +256,7 @@ public class ActivityAddSteps extends AppCompatActivity implements AdapterInstru
 
         Button okDialogButton = dialogView.findViewById(R.id.okButton);
         Button cancelDialogButton = dialogView.findViewById(R.id.cancelButton);
+        ImageButton closeDialog = dialogView.findViewById(R.id.closeBtn);
 
         builder.setView(dialogView);
         AlertDialog alertDialog = builder.create();
@@ -254,6 +275,13 @@ public class ActivityAddSteps extends AppCompatActivity implements AdapterInstru
                 alertDialog.dismiss();
             }
         });
+        closeDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alertDialog.show();
 
     }
@@ -349,6 +377,8 @@ public class ActivityAddSteps extends AppCompatActivity implements AdapterInstru
             }
         };
         RequestHandler.getInstance(ActivityAddSteps.this).addToRequestQueue(stringRequest);
+
+
     }
 
 
